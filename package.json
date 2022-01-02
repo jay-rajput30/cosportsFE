@@ -1,0 +1,19 @@
+{
+  "name": "cosportsfe",
+  "version": "1.0.0",
+  "description": "This is the front end for cosports social media app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jay-rajput30/cosportsFE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jay-rajput30/cosportsFE/issues"
+  },
+  "homepage": "https://github.com/jay-rajput30/cosportsFE#readme"
+}
