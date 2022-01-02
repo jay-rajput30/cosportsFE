@@ -1,13 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>Social Media</h1>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+
         <p>the name of the class is cataraman. Did you get it?</p>
         <button>GO</button>
         {/* <Counter /> */}
