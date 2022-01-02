@@ -1,10 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700&family=Lato&display=swap");
+
+/* -------------------CUSTOM CSS VARIABLE---------------------- */
+
 :root {
-  --clr-black: #2b2c34;
+  --clr-background: #2b2c34;
   --clr-white: #fffffe;
-  --clr-dark: #16161a;
+  --clr-black: #16161a;
+  --clr-font-text: #565360;
+  --clr-font-label: #90849b;
+  --clr-font-disabled: #e1dfe9;
   --clr-primary: #6246ea;
   --clr-secondary: #d1d1e9;
   --clr-tertiary: #e45858;
+  --length-sm-1: 0.25rem;
+  --length-sm-2: 0.5rem;
+  --length-sm-3: 0.75rem;
+  --length-md-1: 1rem;
+  --length-md-2: 1.25rem;
+  --length-md-3: 1.5rem;
+  --length-lg-1: 2rem;
+  --length-lg-2: 3rem;
+  --length-lg-3: 4rem;
+  --length-xl-1: 7rem;
+  --length-xl-2: 9rem;
+  --length-xl-3: 11rem;
+  --font-weight-700: 700;
+  --font-weight-600: 600;
+  --font-weight-400: 400;
+  --clr-status-red: #ef5350;
+  --clr-status-red-soft: #ffebee;
+  --clr-status-green: #26a69a;
+  --clr-status-green-soft: #e0f2f1;
+  --clr-status-yellow: #ffee58;
+  --clr-status-yellow-soft: #fff9c4;
 }
 
 /*----------------CSS RESETS------------------*/
@@ -69,6 +97,7 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  font-family: "Catamaran", sans-serif;
 }
 /*
   9. Create a root stacking context
@@ -77,3 +106,30 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/*------------------------GENERAL STYLES---------------------*/
+
+body {
+  background-color: var(--clr-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header {
+  font-weight: var(--font-weight-700);
+  font-size: var(--length-lg-3);
+}
+
+p {
+  font-weight: var(--length-sm-3);
+  font-weight: var(--font-weight-400);
+}
+
+input,
+button,
+textarea,
+select 
