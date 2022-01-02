@@ -97,7 +97,6 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
-  font-family: "Catamaran", sans-serif;
 }
 /*
   9. Create a root stacking context
@@ -111,6 +110,7 @@ h6 {
 
 body {
   background-color: var(--clr-white);
+  color: var(--clr-font-text);
 }
 
 h1,
@@ -122,8 +122,13 @@ h6,
 header {
   font-weight: var(--font-weight-700);
   font-size: var(--length-lg-3);
+  font-family: "Catamaran", sans-serif;
+  color: var(--clr-black);
 }
 
+body {
+  font-family: "Lato", serif;
+}
 p {
   font-weight: var(--length-sm-3);
   font-weight: var(--font-weight-400);
@@ -132,4 +137,21 @@ p {
 input,
 button,
 textarea,
-select 
+select {
+  font-family: "Catamaran", sans-serif;
+  font-size: var(--length-md-1);
+  font-weight: var(--font-weight-400);
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  border-radius: 6px;
+  transition: transform 0.2s linear;
+}
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.97);
+}

@@ -9,6 +9,7 @@ function App() {
       <header className="App-header">
         <h1>Social Media</h1>
         <p>the name of the class is cataraman. Did you get it?</p>
+        <button>GO</button>
         {/* <Counter /> */}
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
