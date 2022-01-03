@@ -3,6 +3,11 @@
 /* -------------------CUSTOM CSS VARIABLE---------------------- */
 
 :root {
+  font-size: 16px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
   --clr-background: #2b2c34;
   --clr-white: #fffffe;
   --clr-black: #16161a;
@@ -141,12 +146,20 @@ select {
   font-family: "Catamaran", sans-serif;
   font-size: var(--length-md-1);
   font-weight: var(--font-weight-400);
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: var(--clr-primary);
-  color: var(--clr-white);
+  padding: 0.15rem 1rem;
+  border: 2px solid black;
   border-radius: 6px;
   transition: transform 0.2s linear;
+  margin: 0.5rem;
+}
+button {
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+}
+
+input,
+textarea {
+  text-align: center;
 }
 button:hover {
   transform: scale(1.02);

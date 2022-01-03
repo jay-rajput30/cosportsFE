@@ -1,0 +1,19 @@
+.login--container {
+  /* border: 2px solid orange; */
+  padding: var(--space-1);
+  margin: var(--space-2) 0;
+}
+
+.form--submit--btn {
+  margin-top: var(--space-3);
+}
+
+.login--form {
+  /* border: 2px solid; */
+  padding: var(--space-4) var(--space-2);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#username,
+#password {
+  width: 200px;
+}
