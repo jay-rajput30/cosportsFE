@@ -1,4 +1,6 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import axios from "axios";
+
+const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const initialState = {
   userDetail: null,
@@ -6,10 +8,28 @@ const initialState = {
   status: "idle",
 };
 
+export const fetchUserLogin = createAsyncThunk(
+  "user/fetchUser",
+  async (username, password) => {
+    try {
+      const response = await axios.post("http://localhost:3003/singleuser", {
+        username,
+        password,
+      });
+
+      return response.data;
+    } catch (e) {
+      console.log({ e });
+    }
+  }
+);
 const UserSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    // loginDetailsEntered: (state, action) => {
+    // },
+  },
 });
 // set initial state
 // set combineReducers
