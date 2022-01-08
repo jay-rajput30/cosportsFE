@@ -6,6 +6,7 @@ const initialState = {
   userDetail: null,
   token: null,
   status: "idle",
+  error: null,
 };
 
 export const fetchUserLogin = createAsyncThunk(
@@ -29,6 +30,19 @@ const UserSlice = createSlice({
   reducers: {
     // loginDetailsEntered: (state, action) => {
     // },
+  },
+  extraReducers: {
+    [fetchUserLogin.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [fetchUserLogin.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.token = action.payload.token;
+    },
+    [fetchUserLogin.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.payload.err.message;
+    },
   },
 });
 // set initial state
