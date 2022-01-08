@@ -11,12 +11,15 @@ const initialState = {
 
 export const fetchUserLogin = createAsyncThunk(
   "user/fetchUser",
-  async (username, password) => {
+  async ({ username, password }) => {
     try {
-      const response = await axios.post("http://localhost:3003/singleuser", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:3003/user/singleuser",
+        {
+          username,
+          password,
+        }
+      );
 
       return response.data;
     } catch (e) {
@@ -24,7 +27,7 @@ export const fetchUserLogin = createAsyncThunk(
     }
   }
 );
-const UserSlice = createSlice({
+export const UserSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -37,6 +40,7 @@ const UserSlice = createSlice({
     },
     [fetchUserLogin.fulfilled]: (state, action) => {
       state.status = "fulfilled";
+      state.userDetail = action.payload.user;
       state.token = action.payload.token;
     },
     [fetchUserLogin.rejected]: (state, action) => {
@@ -49,3 +53,5 @@ const UserSlice = createSlice({
 // set combineReducers
 // set thunk
 // set extra reducers
+
+export default UserSlice.reducer;
