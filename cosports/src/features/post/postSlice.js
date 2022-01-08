@@ -7,28 +7,35 @@ const initialState = {
   status: "idle",
 };
 
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  try {
-    const response = await axios.get("http://localhost:3003/post");
+export const fetchAllPosts = createAsyncThunk(
+  "posts/fetchPosts",
+  async (token) => {
+    try {
+      const response = await axios.get("http://localhost:3003/post", {
+        headers: {
+          Authorization: token,
+        },
+      });
 
-    return response.data.posts;
-  } catch (e) {
-    console.log({ error: e });
+      return response.data.posts;
+    } catch (e) {
+      console.log({ error: e });
+    }
   }
-});
+);
 export const postSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchPosts.pending]: (state, action) => {
+    [fetchAllPosts.pending]: (state, action) => {
       state.status = "loading";
     },
-    [fetchPosts.fulfilled]: (state, action) => {
+    [fetchAllPosts.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.posts = action.payload;
     },
-    [fetchPosts.rejected]: (state, action) => {
+    [fetchAllPosts.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.error.message;
     },
