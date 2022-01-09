@@ -7,7 +7,7 @@ const Feeds = () => {
   const { userDetail, token, status, error } = useSelector(
     (state) => state.user
   );
-
+  console.log({ allPosts });
   useEffect(() => {
     const fetchPosts = async () => {
       dispatch(fetchAllPosts(token));
@@ -17,7 +17,7 @@ const Feeds = () => {
   }, []);
   return (
     <div>
-      {allPosts.map((item) => {
+      {allPosts.posts.map((item) => {
         return <p>{item.content}</p>;
       })}
     </div>
