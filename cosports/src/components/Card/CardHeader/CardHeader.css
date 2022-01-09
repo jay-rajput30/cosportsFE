@@ -1,0 +1,12 @@
+.card--name {
+  font-size: var(--length-md-3);
+  display: inline-block;
+  /* border: 2px solid green; */
+  margin-right: 8px;
+}
+.card--username {
+  margin-right: 8px;
+}
+/* h5 {
+  font-size: 8px;
+} */
