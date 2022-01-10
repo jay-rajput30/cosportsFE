@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllPosts } from "features/post/postSlice";
 import Card from "components/Card/Card";
+import "./Feeds.css";
+
 const Feeds = () => {
   const dispatch = useDispatch();
   const allPosts = useSelector((state) => state.posts);
