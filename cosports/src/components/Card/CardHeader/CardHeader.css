@@ -5,10 +5,15 @@
 }
 
 .card--avatar {
-  height: var(--space-4);
-  width: var(--space-4);
-  background-color: black;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
+  border: 2px solid;
+  font-size: var(--length-md-1);
+  text-align: center;
+  background-color: var(--clr-secondary);
+  color: var(--clr-black);
+  padding-top: 3px;
 }
 
 .card--header--top {
@@ -37,8 +42,4 @@
 }
 .card--date {
   color: var(--clr-font-label);
-}
-
-.card--avatar {
-  color: var(--clr-white);
 }

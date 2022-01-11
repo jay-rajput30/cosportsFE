@@ -1,6 +1,7 @@
 import CardBody from "./CardBody/CardBody";
 import CardHeader from "./CardHeader/CardHeader";
 import "./Card.css";
+import LikeAndComments from "./LikeAndComments/LikeAndComments";
 
 const Card = ({ item }) => {
   const { content, likes, updatedAt: date } = item;
@@ -17,6 +18,7 @@ const Card = ({ item }) => {
       <CardBody>
         <p className="card--content">{content}</p>
       </CardBody>
+      <LikeAndComments />
     </article>
   );
 };

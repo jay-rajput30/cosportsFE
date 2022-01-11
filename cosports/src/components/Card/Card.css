@@ -1,11 +1,20 @@
 .card--container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100%;
   padding: var(--space-1);
+  border-bottom: 1px solid var(--clr-secondary);
+  margin: var(--space-1) 0;
 }
 
 .card--content {
   text-align: left;
   font-size: var(--length-md-1);
   margin-left: 2.5rem;
+}
+
+@media screen and (min-width: 678px) {
+  .card--container {
+    max-width: 60%;
+    /* border: 2px solid red; */
+  }
 }

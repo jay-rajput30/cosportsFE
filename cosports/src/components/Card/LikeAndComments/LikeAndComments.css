@@ -1,0 +1,8 @@
+.card--like-comment--container {
+  margin-top: var(--space-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin-left: 2.55rem;
+}
