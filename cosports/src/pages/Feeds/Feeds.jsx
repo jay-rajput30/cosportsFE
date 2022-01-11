@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { fetchAllPosts } from "features/post/postSlice";
 import Card from "components/Card/Card";
 import "./Feeds.css";
+import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 
 const Feeds = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Feeds = () => {
       {allPosts.posts.map((item) => {
         return <Card key={item._id} item={item} />;
       })}
+      <NavbarMobile />
     </div>
   );
 };

@@ -5,16 +5,16 @@ import { IconContext } from "react-icons";
 const NavbarMobile = () => {
   return (
     <div className="navbar--mobile--container">
-      <IconContext.Provider value={{ className: "react--icon" }}>
+      <IconContext.Provider value={{ className: "navbar--icon" }}>
         <FiHome />
       </IconContext.Provider>
-      <IconContext.Provider value={{ className: "react--icon" }}>
+      <IconContext.Provider value={{ className: "navbar--icon" }}>
         <FiSearch />
       </IconContext.Provider>
-      <IconContext.Provider.Provider value={{ className: "react--icon" }}>
+      <IconContext.Provider value={{ className: "navbar--icon" }}>
         <FiBell />
-      </IconContext.Provider.Provider>
-      <IconContext.Provider value={{ className: "react--icon" }}>
+      </IconContext.Provider>
+      <IconContext.Provider value={{ className: "navbar--icon" }}>
         <FiSettings />
       </IconContext.Provider>
     </div>
