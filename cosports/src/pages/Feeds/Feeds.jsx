@@ -4,6 +4,7 @@ import { fetchAllPosts } from "features/post/postSlice";
 import Card from "components/Card/Card";
 import "./Feeds.css";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
+import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 
 const Feeds = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Feeds = () => {
         return <Card key={item._id} item={item} />;
       })}
       <NavbarMobile />
+      <NavbarDesktop />
     </div>
   );
 };
