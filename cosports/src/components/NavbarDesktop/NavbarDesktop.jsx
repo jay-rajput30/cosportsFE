@@ -1,6 +1,7 @@
 import "./NavbarDesktop.css";
 import { FiHome, FiSearch, FiBell, FiSettings } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import Button from "components/Button/Button";
 
 const NavbarDesktop = () => {
   return (
@@ -32,6 +33,7 @@ const NavbarDesktop = () => {
         </IconContext.Provider>
         <span>settings</span>
       </div>
+      <Button text="post" />
     </div>
   );
 };

@@ -5,14 +5,26 @@ import Card from "components/Card/Card";
 import "./Feeds.css";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Feeds = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const allPosts = useSelector((state) => state.posts);
   const { userDetail, token, status, error } = useSelector(
     (state) => state.user
   );
-  // console.log({ allPosts });
+  const [showComponent, setShowComponent] = useState(false);
+
+  const componentActive = (id) => {
+    setShowComponent((showComponent) => true);
+    navigate(`/singlepost/${id}`);
+  };
+
+  const componentInactive = () => {
+    setShowComponent((showComponent) => false);
+  };
   useEffect(() => {
     const fetchPosts = async () => {
       dispatch(fetchAllPosts(token));
@@ -23,7 +35,15 @@ const Feeds = () => {
   return (
     <div className="feed--container">
       {allPosts.posts.map((item) => {
-        return <Card key={item._id} item={item} />;
+        return (
+          <Card
+            key={item._id}
+            item={item}
+            showComponent={showComponent}
+            componentActive={componentActive}
+            componentInactive={componentInactive}
+          />
+        );
       })}
       <NavbarMobile />
       <NavbarDesktop />

@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Feeds from "pages/Feeds/Feeds";
+import SinglePost from "pages/SinglePost/SinglePost";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/feeds" element={<Feeds />} />
+          <Route path="/singlepost/:id" element={<SinglePost />} />
         </Routes>
       </header>
     </div>

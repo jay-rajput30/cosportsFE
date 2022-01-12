@@ -3,12 +3,15 @@ import CardHeader from "./CardHeader/CardHeader";
 import "./Card.css";
 import LikeAndComments from "./LikeAndComments/LikeAndComments";
 
-const Card = ({ item }) => {
+const Card = ({ item, showComponent, componentActive, componentInactive }) => {
   const { content, likes, updatedAt: date } = item;
   const { firstName, lastName, username } = item.uid;
 
   return (
-    <article className="card--container">
+    <article
+      className="card--container"
+      onClick={() => componentActive(item._id)}
+    >
       <CardHeader
         firstname={firstName}
         lastname={lastName}
