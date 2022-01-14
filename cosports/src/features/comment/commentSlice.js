@@ -28,6 +28,19 @@ export const commentSlice = createSlice({
   name: "comments",
   initialState,
   reducers: {},
+  extraReducers: {
+    [fetchAllComments.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [fetchAllComments.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.comments = action.payload;
+    },
+    [fetchAllComments.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.error.message;
+    },
+  },
 });
 
 export default commentSlice.reducer;

@@ -7,6 +7,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 import PostDetails from "./PostDetails/PostDetails";
+import PostComments from "./PostComments/PostComments";
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const SinglePost = () => {
       <NavbarMobile />
       <div className="post--content">
         <PostDetails post={singlePost} />
+        <PostComments post={singlePost} />
       </div>
     </div>
   );
