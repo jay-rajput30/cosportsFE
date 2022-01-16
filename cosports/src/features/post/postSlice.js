@@ -26,7 +26,16 @@ export const fetchAllPosts = createAsyncThunk(
 export const postSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    incrementLikes: (state, action) => {
+      const postFound = state.posts.findIndex(
+        (item) => item._id === action.payload._id
+      );
+
+      state.posts[postFound].likes += 1;
+      // console.log({ postFound, payload: action.payload });
+    },
+  },
   extraReducers: {
     [fetchAllPosts.pending]: (state, action) => {
       state.status = "loading";
@@ -41,5 +50,7 @@ export const postSlice = createSlice({
     },
   },
 });
+
+export const { incrementLikes } = postSlice.actions;
 
 export default postSlice.reducer;

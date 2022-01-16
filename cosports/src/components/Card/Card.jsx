@@ -8,20 +8,19 @@ const Card = ({ item, showComponent, componentActive, componentInactive }) => {
   const { firstName, lastName, username } = item.uid;
 
   return (
-    <article
-      className="card--container"
-      onClick={() => componentActive(item._id)}
-    >
+    <article className="card--container">
       <CardHeader
         firstname={firstName}
         lastname={lastName}
         username={username}
         date={date}
+        id={item._id}
+        componentActive={componentActive}
       />
-      <CardBody>
+      <CardBody id={item._id} componentActive={componentActive}>
         <p className="card--content">{content}</p>
       </CardBody>
-      <LikeAndComments />
+      <LikeAndComments post={item} />
     </article>
   );
 };

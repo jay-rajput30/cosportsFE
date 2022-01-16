@@ -17,7 +17,7 @@ const PostDetails = ({ post }) => {
       <PostDetailsBody>
         <PostDetailsBodyComment content={content} />
       </PostDetailsBody>
-      <LikeAndComments />
+      <LikeAndComments post={post} />
     </div>
   );
 };

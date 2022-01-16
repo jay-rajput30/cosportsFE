@@ -1,9 +1,16 @@
 import { getDateFormat, getUserInitials } from "utils/cardUtils";
 import "./CardHeader.css";
 
-const CardHeader = ({ firstname, lastname, username, date }) => {
+const CardHeader = ({
+  firstname,
+  lastname,
+  username,
+  date,
+  id,
+  componentActive,
+}) => {
   return (
-    <div className="card--header">
+    <div className="card--header" onClick={() => componentActive(id)}>
       <div className="card--header--top">
         <div className="card--avatar">
           {getUserInitials(firstname, lastname)}

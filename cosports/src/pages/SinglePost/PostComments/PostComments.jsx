@@ -26,9 +26,9 @@ const PostComments = ({ post }) => {
     <article class="comments--container">
       {comments.map((item) => {
         return (
-          <article className="single--comment">
+          <article className="single--comment" key={item._id}>
             <CommentCard comment={item} />
-            <LikeAndComments />
+            <LikeAndComments post={post} />
           </article>
         );
       })}

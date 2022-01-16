@@ -1,5 +1,5 @@
 import "./NavbarMobile.css";
-import { FiHome, FiSearch, FiBell, FiSettings } from "react-icons/fi";
+import { FiHome, FiSearch, FiBell, FiUser } from "react-icons/fi";
 import { IconContext } from "react-icons";
 
 const NavbarMobile = () => {
@@ -15,7 +15,7 @@ const NavbarMobile = () => {
         <FiBell />
       </IconContext.Provider>
       <IconContext.Provider value={{ className: "navbar--icon" }}>
-        <FiSettings />
+        <FiUser />
       </IconContext.Provider>
     </div>
   );
