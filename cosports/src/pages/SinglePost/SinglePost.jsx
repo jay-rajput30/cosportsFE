@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./SinglePost.css";
 // import { useEffect } from "react";
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
@@ -12,14 +12,17 @@ import PostComments from "./PostComments/PostComments";
 const SinglePost = () => {
   const { id } = useParams();
   const allPosts = useSelector((state) => state.posts);
-
+  const navigate = useNavigate();
   const singlePost = allPosts.posts.find((item) => item._id === id);
   console.log({ singlePost });
 
+  const backButtonClickHandler = () => {
+    navigate("/feeds");
+  };
   return (
     <div className="single--post--container">
       <IconContext.Provider value={{ className: "back--icon" }}>
-        <BiArrowBack />
+        <BiArrowBack onClick={backButtonClickHandler} />
       </IconContext.Provider>
       <NavbarDesktop />
       <NavbarMobile />
