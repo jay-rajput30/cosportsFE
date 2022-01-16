@@ -1,3 +1,4 @@
+import { getDateFormat, getUserInitials } from "utils/cardUtils";
 import "./CommentCard.css";
 
 const CommentCard = ({ comment }) => {
@@ -5,15 +6,19 @@ const CommentCard = ({ comment }) => {
   const { date } = comment;
   return (
     <div className="comment--card--container">
-      {/* <div className="card--avatar">
-          {getUserInitials(firstName, lastname)}
-        </div>
-        <h4 className="card--name">{firstname + " " + lastname}</h4>
+      <div className="comment--avatar">
+        {getUserInitials(firstName, lastName)}
       </div>
-      <div className="card--header--top">
-        <span className="card--username">{username}</span>
-        <span className="card--date">{getDateFormat(date)}</span>
-      </div> */}
+
+      <div className="comment--header--top">
+        <h4 className="comment--name">{firstName + " " + lastName}</h4>
+        <div class="comment--header">
+          <span className="comment--username">{username}</span>
+          <span className="comment--date">{getDateFormat(date)}</span>
+        </div>
+
+        <p className="comment--content">{comment.content}</p>
+      </div>
     </div>
   );
 };

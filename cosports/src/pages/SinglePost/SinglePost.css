@@ -19,4 +19,10 @@
     /* position: fixed; */
     left: 390px;
   }
+
+  .single--post--container {
+    max-width: 60%;
+    margin-top: var(--space-2);
+    margin-left: var(--space-2);
+  }
 }

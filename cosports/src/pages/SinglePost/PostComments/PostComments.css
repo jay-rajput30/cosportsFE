@@ -1,0 +1,11 @@
+.comments--container {
+}
+
+.single--comment {
+  border-top: 1px solid var(--clr-secondary);
+  padding: var(--space-1);
+}
+
+.single--comment:last-child {
+  border-bottom: 1px solid vaR(--clr-secondary);
+}

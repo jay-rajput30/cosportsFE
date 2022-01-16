@@ -31,7 +31,6 @@ const NavbarDesktop = () => {
  on profile page we should have setting/logout option******** */}
 
       <div className="navbar--item--container">
-        1
         <IconContext.Provider value={{ className: "navbar--icon" }}>
           <FiSettings />
         </IconContext.Provider>

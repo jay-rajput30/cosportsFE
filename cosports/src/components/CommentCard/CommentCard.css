@@ -1,0 +1,61 @@
+.comment--card--container {
+  display: flex;
+  flex-direction: row;
+  padding: var(--space-1);
+}
+
+/* .comment--card--container:last-child {
+  border-bottom: 1px solid vaR(--clr-secondary);
+} */
+
+.comment--header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* border: 2px solid seagreen; */
+}
+
+.comment--avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid;
+  font-size: var(--length-md-1);
+  text-align: center;
+  background-color: var(--clr-secondary);
+  color: var(--clr-black);
+  padding-top: 3px;
+}
+
+.comment--header--top {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment--name {
+  font-size: var(--length-md-2);
+  display: inline-block;
+  /* border: 2px solid green; */
+  margin: 0 var(--space-1);
+  text-align: start;
+}
+.comment--username {
+  margin-left: vaR(--space-1);
+  color: var(--clr-font-label);
+  text-align: start;
+  font-size: var(--length-sm-3);
+}
+
+.comment--date {
+  margin: 0 0 var(--space-1) var(--space-2);
+  color: var(--clr-font-label);
+  text-align: start;
+  font-size: var(--length-sm-3);
+}
+.comment--date {
+  color: var(--clr-font-label);
+}
+
+.comment--content {
+  margin-left: var(--space-1);
+}

@@ -2,6 +2,8 @@ import "./PostComments.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllComments } from "features/comment/commentSlice";
+import CommentCard from "components/CommentCard/CommentCard";
+import LikeAndComments from "components/Card/LikeAndComments/LikeAndComments";
 
 const PostComments = ({ post }) => {
   const dispatch = useDispatch();
@@ -20,7 +22,18 @@ const PostComments = ({ post }) => {
     fetchComments();
   }, []);
   console.log({ comments });
-  return <p>this are the comments for this post</p>;
+  return (
+    <article class="comments--container">
+      {comments.map((item) => {
+        return (
+          <article className="single--comment">
+            <CommentCard comment={item} />
+            <LikeAndComments />
+          </article>
+        );
+      })}
+    </article>
+  );
 };
 
 export default PostComments;
