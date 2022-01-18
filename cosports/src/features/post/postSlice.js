@@ -23,6 +23,22 @@ export const fetchAllPosts = createAsyncThunk(
     }
   }
 );
+
+export const updateLikes = createAsyncThunk(
+  "posts/updateLikes",
+  async (token) => {
+    try {
+      const response = await axios.post("http://localhost:3003/post/likepost", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      return response.data.post;
+    } catch (e) {
+      console.log({ error: e });
+    }
+  }
+);
 export const postSlice = createSlice({
   name: "posts",
   initialState,
@@ -47,6 +63,17 @@ export const postSlice = createSlice({
     [fetchAllPosts.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.error.message;
+    },
+    [updateLikes.error]: (state, action) => {
+      state.status = "error";
+      state.error = action.error.message;
+    },
+    [updateLikes.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      const postIndex = state.posts.findIndex(
+        (item) => item._id === action.payload._id
+      );
+      state.posts[postIndex] = action.payload;
     },
   },
 });
