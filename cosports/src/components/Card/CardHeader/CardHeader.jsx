@@ -9,6 +9,7 @@ const CardHeader = ({
   id,
   componentActive,
 }) => {
+  console.log({ firstname, lastname, username, date, id });
   return (
     <div className="card--header" onClick={() => componentActive(id)}>
       <div className="card--header--top">
@@ -21,8 +22,6 @@ const CardHeader = ({
         <span className="card--username">{username}</span>
         <span className="card--date">{getDateFormat(date)}</span>
       </div>
-
-      {/* <span className="card--date"></span> */}
     </div>
   );
 };

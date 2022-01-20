@@ -11,9 +11,7 @@ const PostDetailsHeader = ({ firstname, lastname, username }) => {
       </div>
       <div className="post--header--top">
         <h4 className="post--name">{firstname + " " + lastname}</h4>
-        {/* <div> */}
         <span className="post--username">{username}</span>
-        {/* </div> */}
       </div>
     </div>
   );

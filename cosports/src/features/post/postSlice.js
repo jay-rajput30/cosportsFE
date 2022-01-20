@@ -26,13 +26,18 @@ export const fetchAllPosts = createAsyncThunk(
 
 export const updateLikes = createAsyncThunk(
   "posts/updateLikes",
-  async (token) => {
+  async ({ token, postId }) => {
+    console.log({ token, postId });
     try {
-      const response = await axios.post("http://localhost:3003/post/likepost", {
-        headers: {
-          Authorization: token,
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:3003/post/likepost",
+        { postId },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
       return response.data.post;
     } catch (e) {
       console.log({ error: e });
@@ -64,7 +69,7 @@ export const postSlice = createSlice({
       state.status = "error";
       state.error = action.error.message;
     },
-    [updateLikes.error]: (state, action) => {
+    [updateLikes.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.error.message;
     },

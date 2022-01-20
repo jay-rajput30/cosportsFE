@@ -23,12 +23,12 @@ const PostComments = ({ post }) => {
   }, []);
   console.log({ comments });
   return (
-    <article class="comments--container">
+    <article className="comments--container">
       {comments.map((item) => {
         return (
           <article className="single--comment" key={item._id}>
             <CommentCard comment={item} />
-            <LikeAndComments post={post} />
+            <LikeAndComments post={item} />
           </article>
         );
       })}
