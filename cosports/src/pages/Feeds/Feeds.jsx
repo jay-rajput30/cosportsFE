@@ -32,6 +32,8 @@ const Feeds = () => {
 
     fetchPosts();
   }, []);
+
+  console.log({ allPosts });
   return (
     <div className="feed--container">
       {allPosts.posts.map((item) => {

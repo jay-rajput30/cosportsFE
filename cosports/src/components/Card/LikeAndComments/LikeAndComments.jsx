@@ -18,6 +18,7 @@ const LikeAndComments = ({ post }) => {
     dispatch(incrementLikes(post));
     dispatch(updateLikes({ token, postId: post._id }));
   };
+  // console.log({likes: post.likes, post})
   return (
     <div className="card--like-comment--container">
       <IconContext.Provider value={{ className: "react--icon" }}>

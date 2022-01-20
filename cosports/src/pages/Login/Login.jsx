@@ -24,6 +24,7 @@ const Login = () => {
     dispatch(fetchUserLogin(login));
     if (status === "fulfilled") {
       navigate("/feeds");
+      localStorage.setItem("userToken", JSON.stringify(token));
     }
   };
   return (

@@ -7,6 +7,7 @@ export const getDateFormat = (date) => {
 };
 
 export const getUserInitials = (firstName, lastName) => {
+  // console.log({ firstName, lastName });
   return (
     firstName.split("")[0].toUpperCase() + lastName.split("")[0].toUpperCase()
   );

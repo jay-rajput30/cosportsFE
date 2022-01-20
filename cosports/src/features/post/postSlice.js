@@ -52,8 +52,16 @@ export const postSlice = createSlice({
       const postFound = state.posts.findIndex(
         (item) => item._id === action.payload._id
       );
+      const likesObj = state.posts[postFound].likes;
 
-      state.posts[postFound].likes += 1;
+      const alreadyLiked = likesObj.find(
+        (item) => item === action.payload.uid._id
+      );
+      // console.log({ alreadyLiked, likesObj });
+      alreadyLiked
+        ? likesObj.filter((item) => item !== action.payload.uid._id)
+        : likesObj.push(action.payload.uid._id);
+
       // console.log({ postFound, payload: action.payload });
     },
   },
