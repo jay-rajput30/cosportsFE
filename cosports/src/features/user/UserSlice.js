@@ -12,38 +12,46 @@ const initialState = {
 export const fetchUserLogin = createAsyncThunk(
   "user/fetchUser",
   async ({ username, password }) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3003/user/singleuser",
-        {
-          username,
-          password,
-        }
-      );
+    // try {
+    const response = await axios.post("http://localhost:3003/user/singleuser", {
+      username,
+      password,
+    });
 
-      return response.data;
-    } catch (e) {
-      console.log({ e });
-    }
+    return response.data;
+    // } catch (e) {
+    //   console.log({ e });
+    // }
   }
 );
 export const UserSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // loginDetailsEntered: (state, action) => {
-    // },
+    logoutUser: (state) => {
+      state.status = "idle";
+      state.userDetail = null;
+      state.token = null;
+      localStorage.removeItem("userToken");
+    },
+    updateToken: (state, action) => {
+      state.token = action.payload;
+    },
   },
   extraReducers: {
     [fetchUserLogin.pending]: (state, action) => {
       state.status = "loading";
+      console.log("loading");
     },
     [fetchUserLogin.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.userDetail = action.payload.user;
       state.token = action.payload.token;
+      localStorage.setItem("userToken", JSON.stringify(state.token));
+      console.log("success");
     },
     [fetchUserLogin.rejected]: (state, action) => {
+      console.log("error");
       state.status = "error";
       state.error = action.payload.err.message;
     },
@@ -54,4 +62,5 @@ export const UserSlice = createSlice({
 // set thunk
 // set extra reducers
 
+export const { logoutUser, updateToken } = UserSlice.actions;
 export default UserSlice.reducer;

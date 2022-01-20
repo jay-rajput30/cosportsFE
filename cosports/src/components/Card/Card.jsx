@@ -6,7 +6,7 @@ import LikeAndComments from "./LikeAndComments/LikeAndComments";
 const Card = ({ item, showComponent, componentActive, componentInactive }) => {
   const { content, likes, updatedAt: date } = item;
   const { firstName, lastName, username } = item.uid;
-  console.log({ item });
+
   return (
     <article className="card--container">
       <CardHeader

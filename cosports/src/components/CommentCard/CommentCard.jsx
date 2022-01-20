@@ -12,7 +12,7 @@ const CommentCard = ({ comment }) => {
 
       <div className="comment--header--top">
         <h4 className="comment--name">{firstName + " " + lastName}</h4>
-        <div class="comment--header">
+        <div className="comment--header">
           <span className="comment--username">{username}</span>
           <span className="comment--date">{getDateFormat(date)}</span>
         </div>

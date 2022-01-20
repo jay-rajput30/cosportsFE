@@ -18,6 +18,7 @@ const Feeds = () => {
   const [showComponent, setShowComponent] = useState(false);
 
   const componentActive = (id) => {
+    console.log("componentActive func", { id });
     setShowComponent((showComponent) => true);
     navigate(`/singlepost/${id}`);
   };
@@ -26,17 +27,18 @@ const Feeds = () => {
     setShowComponent((showComponent) => false);
   };
   useEffect(() => {
-    const fetchPosts = async () => {
-      dispatch(fetchAllPosts(token));
-    };
-
-    fetchPosts();
+    console.log({ allPosts });
+    if (allPosts.posts.length === 0) {
+      const fetchPosts = async () => {
+        dispatch(fetchAllPosts(token));
+      };
+      fetchPosts();
+    }
   }, []);
-
-  console.log({ allPosts });
+  console.log("this is feeds", { token });
   return (
     <div className="feed--container">
-      {allPosts.posts.map((item) => {
+      {allPosts?.posts?.map((item) => {
         return (
           <Card
             key={item._id}

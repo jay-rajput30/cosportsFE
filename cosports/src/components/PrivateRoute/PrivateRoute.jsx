@@ -1,14 +1,18 @@
 import { Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateToken } from "features/user/UserSlice";
 
-const PrivateRoute = ({ path, ...props }) => {
+const PrivateRoute = ({ children }) => {
   const userLoggedIn = useSelector((state) => state.user);
-  const { status } = userLoggedIn;
-  return status === "fulfilled" ? (
-    <Route path={path} {...props} />
-  ) : (
-    <Navigate state={{ from: path }} replace to="/login" />
-  );
+  const dispatch = useDispatch();
+  const { token } = userLoggedIn;
+  const userToken = token
+    ? token
+    : JSON.parse(localStorage.getItem("userToken"));
+  console.log({ userToken });
+
+  dispatch(updateToken(userToken));
+  return userToken ? children : <Navigate replace to="/login" />;
 };
 
 export default PrivateRoute;

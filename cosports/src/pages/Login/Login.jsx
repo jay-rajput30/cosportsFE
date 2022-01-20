@@ -1,5 +1,6 @@
+import { fetchAllPosts } from "features/post/postSlice";
 import { fetchUserLogin } from "features/user/UserSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -22,11 +23,14 @@ const Login = () => {
 
   const loginClickHandler = () => {
     dispatch(fetchUserLogin(login));
+    console.log({ status });
+  };
+  useEffect(() => {
     if (status === "fulfilled") {
       navigate("/feeds");
-      localStorage.setItem("userToken", JSON.stringify(token));
+      dispatch(fetchAllPosts(token));
     }
-  };
+  }, [status]);
   return (
     <div className="login--container">
       <form className="login--form" onSubmit={(e) => e.preventDefault()}>

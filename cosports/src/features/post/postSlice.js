@@ -10,17 +10,13 @@ const initialState = {
 export const fetchAllPosts = createAsyncThunk(
   "posts/fetchPosts",
   async (token) => {
-    try {
-      const response = await axios.get("http://localhost:3003/post", {
-        headers: {
-          Authorization: token,
-        },
-      });
+    const response = await axios.get("http://localhost:3003/post", {
+      headers: {
+        Authorization: token,
+      },
+    });
 
-      return response.data.posts;
-    } catch (e) {
-      console.log({ error: e });
-    }
+    return response.data.posts;
   }
 );
 

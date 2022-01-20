@@ -6,6 +6,9 @@ import SignUp from "./pages/SignUp/SignUp";
 import Feeds from "pages/Feeds/Feeds";
 import SinglePost from "pages/SinglePost/SinglePost";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
+import Profile from "pages/Profile/Profile";
+import Search from "pages/Search/Search";
+import Notification from "pages/Notification/Notification";
 
 function App() {
   return (
@@ -13,14 +16,52 @@ function App() {
       <header className="app--header">
         {/* <h1>CoSports</h1> */}
         <Routes>
-          {/* <PrivateRoute path="/login" element={<Login />} />
-          <PrivateRoute path="/signup" element={<SignUp />} />
-          <PrivateRoute path="/feeds" element={<Feeds />} />
-          <PrivateRoute path="/singlepost/:id" element={<SinglePost />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/feeds"
+            element={
+              <PrivateRoute>
+                <Feeds />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/singlepost/:id"
+            element={
+              <PrivateRoute>
+                <SinglePost />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <PrivateRoute>
+                <Search />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/notification"
+            element={
+              <PrivateRoute>
+                <Notification />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+          {/* <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/feeds" element={<Feeds />} />
-          <Route path="/singlepost/:id" element={<SinglePost />} />
+          <Route path="/singlepost/:id" element={<SinglePost />} /> */}
         </Routes>
       </header>
     </div>
