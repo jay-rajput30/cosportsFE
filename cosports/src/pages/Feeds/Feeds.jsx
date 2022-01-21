@@ -8,7 +8,7 @@ import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Feeds = () => {
+const Feeds = ({ showModal, setShowModal }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const allPosts = useSelector((state) => state.posts);
@@ -47,8 +47,8 @@ const Feeds = () => {
           />
         );
       })}
-      <NavbarMobile />
-      <NavbarDesktop />
+      <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
+      <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

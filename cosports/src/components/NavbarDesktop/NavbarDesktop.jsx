@@ -3,7 +3,7 @@ import { FiHome, FiSearch, FiBell, FiSettings } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import Button from "components/Button/Button";
 
-const NavbarDesktop = () => {
+const NavbarDesktop = ({ showModal, setShowModal }) => {
   return (
     <div className="navbar--desktop--container">
       <div className="navbar--item--container">
@@ -36,7 +36,12 @@ const NavbarDesktop = () => {
         </IconContext.Provider>
         <span>settings</span>
       </div>
-      <Button text="post" screen="desktop" />
+      <Button
+        text="post"
+        screen="desktop"
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 };

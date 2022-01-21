@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import PostDetails from "./PostDetails/PostDetails";
 import PostComments from "./PostComments/PostComments";
 
-const SinglePost = () => {
+const SinglePost = ({ showModal, setShowModal }) => {
   const { id } = useParams();
   const allPosts = useSelector((state) => state.posts);
   const navigate = useNavigate();
@@ -24,12 +24,12 @@ const SinglePost = () => {
       <IconContext.Provider value={{ className: "back--icon" }}>
         <BiArrowBack onClick={backButtonClickHandler} />
       </IconContext.Provider>
-      <NavbarDesktop />
-      <NavbarMobile />
       <div className="post--content">
         <PostDetails post={singlePost} />
         <PostComments post={singlePost} />
       </div>
+      <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
+      <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

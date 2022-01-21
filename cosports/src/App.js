@@ -9,8 +9,9 @@ import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import Profile from "pages/Profile/Profile";
 import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
-
+import { useState } from "react";
 function App() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="main--container">
       <header className="app--header">
@@ -22,7 +23,7 @@ function App() {
             path="/feeds"
             element={
               <PrivateRoute>
-                <Feeds />
+                <Feeds showModal={showModal} setShowModal={setShowModal} />
               </PrivateRoute>
             }
           />
@@ -30,7 +31,7 @@ function App() {
             path="/singlepost/:id"
             element={
               <PrivateRoute>
-                <SinglePost />
+                <SinglePost showModal={showModal} setShowModal={setShowModal} />
               </PrivateRoute>
             }
           />
@@ -38,7 +39,7 @@ function App() {
             path="/search"
             element={
               <PrivateRoute>
-                <Search />
+                <Search showModal={showModal} setShowModal={setShowModal} />
               </PrivateRoute>
             }
           />
@@ -46,7 +47,10 @@ function App() {
             path="/notification"
             element={
               <PrivateRoute>
-                <Notification />
+                <Notification
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                />
               </PrivateRoute>
             }
           />
@@ -54,7 +58,7 @@ function App() {
             path="/profile"
             element={
               <PrivateRoute>
-                <Profile />
+                <Profile showModal={showModal} setShowModal={setShowModal} />
               </PrivateRoute>
             }
           />

@@ -1,12 +1,12 @@
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 
-const Search = () => {
+const Search = ({ showModal, setShowModal }) => {
   return (
     <div>
       <h1>this is the search page</h1>;
-      <NavbarMobile />
-      <NavbarDesktop />
+      <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
+      <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

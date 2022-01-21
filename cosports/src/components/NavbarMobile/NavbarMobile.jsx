@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import Button from "components/Button/Button";
 
-const NavbarMobile = () => {
+const NavbarMobile = ({ showModal, setShowModal }) => {
   const navigate = useNavigate();
   const homeIconClickHandler = () => {
     navigate("/feeds");
@@ -32,7 +32,12 @@ const NavbarMobile = () => {
       <IconContext.Provider value={{ className: "navbar--icon" }}>
         <FiUser onClick={profileIconClickHandler} />
       </IconContext.Provider>
-      <Button text="+" screen="mobile" />
+      <Button
+        text="+"
+        screen="mobile"
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 };
