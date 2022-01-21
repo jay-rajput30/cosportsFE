@@ -7,6 +7,7 @@ import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "components/Modal/Modal";
 
 const Feeds = ({ showModal, setShowModal }) => {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ const Feeds = ({ showModal, setShowModal }) => {
       })}
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
+      {showModal && <Modal showModal={showModal} setShowModal={setShowModal} />}
     </div>
   );
 };

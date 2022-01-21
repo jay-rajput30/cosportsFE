@@ -48,7 +48,6 @@ export const UserSlice = createSlice({
       state.userDetail = action.payload.user;
       state.token = action.payload.token;
       localStorage.setItem("userToken", JSON.stringify(state.token));
-      console.log("success");
     },
     [fetchUserLogin.rejected]: (state, action) => {
       console.log("error");

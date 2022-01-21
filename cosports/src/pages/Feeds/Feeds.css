@@ -1,6 +1,7 @@
 .feed--container {
   width: 100%;
   margin-bottom: 2.7rem;
+  position: relative;
 }
 
 @media screen and (min-width: 480px) {
@@ -9,5 +10,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
   }
 }
