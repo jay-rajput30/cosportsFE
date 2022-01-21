@@ -23,20 +23,32 @@ export const fetchAllPosts = createAsyncThunk(
 export const updateLikes = createAsyncThunk(
   "posts/updateLikes",
   async ({ token, postId }) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3003/post/likepost",
-        { postId },
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      return response.data.post;
-    } catch (e) {
-      console.log({ error: e });
-    }
+    const response = await axios.post(
+      "http://localhost:3003/post/likepost",
+      { postId },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    return response.data.post;
+  }
+);
+
+export const createPost = createAsyncThunk(
+  "posts/createPost",
+  async ({ postData, token }) => {
+    const response = await axios.post(
+      "http://localhost:3003/post/likepost",
+      { content: postData.content, type: postData.type },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    return response.data.post;
   }
 );
 export const postSlice = createSlice({
@@ -80,6 +92,14 @@ export const postSlice = createSlice({
         (item) => item._id === action.payload._id
       );
       state.posts[postIndex] = action.payload;
+    },
+    [createPost.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.posts.push(action.payload);
+    },
+    [createPost.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.error.message;
     },
   },
 });
