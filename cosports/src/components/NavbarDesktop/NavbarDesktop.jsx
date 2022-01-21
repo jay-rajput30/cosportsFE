@@ -36,7 +36,7 @@ const NavbarDesktop = () => {
         </IconContext.Provider>
         <span>settings</span>
       </div>
-      <Button text="post" />
+      <Button text="post" screen="desktop" />
     </div>
   );
 };

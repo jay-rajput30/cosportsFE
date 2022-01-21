@@ -2,3 +2,14 @@
   width: 75%;
   margin: var(--space-2);
 }
+
+.mobile--btn {
+  position: fixed;
+  bottom: 65px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: var(--length-lg-1);
+  color: var(--clr-black);
+}

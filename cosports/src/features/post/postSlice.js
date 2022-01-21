@@ -23,7 +23,6 @@ export const fetchAllPosts = createAsyncThunk(
 export const updateLikes = createAsyncThunk(
   "posts/updateLikes",
   async ({ token, postId }) => {
-    console.log({ token, postId });
     try {
       const response = await axios.post(
         "http://localhost:3003/post/likepost",
@@ -53,12 +52,10 @@ export const postSlice = createSlice({
       const alreadyLiked = likesObj.find(
         (item) => item === action.payload.uid._id
       );
-      // console.log({ alreadyLiked, likesObj });
+
       alreadyLiked
         ? likesObj.filter((item) => item !== action.payload.uid._id)
         : likesObj.push(action.payload.uid._id);
-
-      // console.log({ postFound, payload: action.payload });
     },
   },
   extraReducers: {

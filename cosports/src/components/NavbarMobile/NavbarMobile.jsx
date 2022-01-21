@@ -2,6 +2,7 @@ import "./NavbarMobile.css";
 import { FiHome, FiSearch, FiBell, FiUser } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
+import Button from "components/Button/Button";
 
 const NavbarMobile = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const NavbarMobile = () => {
       <IconContext.Provider value={{ className: "navbar--icon" }}>
         <FiUser onClick={profileIconClickHandler} />
       </IconContext.Provider>
+      <Button text="+" screen="mobile" />
     </div>
   );
 };
