@@ -2,10 +2,22 @@ import "./Modal.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserInitials } from "utils/cardUtils";
 import Button from "components/Button/Button";
+import { useState } from "react";
+import { createPost } from "features/post/postSlice";
+
 const Modal = ({ showModal, setShowModal }) => {
+  const [content, setContent] = useState("");
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const { firstName, lastName, _id: id } = user.userDetail;
+
   console.log({ firstName, lastName, id });
+  const postBtnClickHandler = () => {
+    dispatch(
+      createPost({ postData: { content, type: "post" }, token: user.token })
+    );
+  };
   return (
     <section className="modal--background">
       <form className="modal--container" onSubmit={(e) => e.preventDefault()}>
@@ -17,9 +29,11 @@ const Modal = ({ showModal, setShowModal }) => {
             className="modal--textarea"
             placeholder="what's on your mind"
             autoFocus
-            rows="5"
+            rows="8"
+            name={content}
+            onChange={(e) => setContent(e.target.value)}
           />
-          <button>post</button>
+          <button onClick={postBtnClickHandler}>post</button>
         </div>
 
         <button

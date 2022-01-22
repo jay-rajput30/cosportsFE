@@ -40,7 +40,7 @@ export const createPost = createAsyncThunk(
   "posts/createPost",
   async ({ postData, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/post/likepost",
+      "http://localhost:3003/post",
       { content: postData.content, type: postData.type },
       {
         headers: {
@@ -94,8 +94,9 @@ export const postSlice = createSlice({
       state.posts[postIndex] = action.payload;
     },
     [createPost.fulfilled]: (state, action) => {
+      console.log({ payload: action.payload });
       state.status = "fulfilled";
-      state.posts.push(action.payload);
+      state.posts += action.payload;
     },
     [createPost.rejected]: (state, action) => {
       state.status = "error";

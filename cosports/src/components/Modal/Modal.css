@@ -13,14 +13,15 @@
   position: relative;
   border: 2px solid;
   width: 100%;
-  height: 30vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--clr-secondary);
 }
 .modal--form--item {
-  width: 70%;
+  margin: 2.5rem 0 0 0;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,8 +41,8 @@
 }
 .modal--close--btn {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 0px;
+  right: 1px;
   border: none;
   color: var(--clr-black);
   font-size: var(--length-md-3);
@@ -64,13 +65,13 @@
   .modal--container {
     margin-top: var(--space-4);
     width: 50%;
-    height: 50vh;
+    height: 55vh;
   }
   .modal--close--btn {
     top: 10px;
     right: 10px;
   }
   .modal--form--item {
-    width: 70%;
+    width: 80%;
   }
 }
