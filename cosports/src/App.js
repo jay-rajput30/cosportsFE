@@ -11,7 +11,7 @@ import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
 function App() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState({ status: false, type: "" });
   return (
     <div className="main--container">
       <header className="app--header">

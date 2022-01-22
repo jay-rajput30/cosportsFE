@@ -9,7 +9,7 @@ const CardHeader = ({
   id,
   componentActive,
 }) => {
-  // console.log({ firstname, lastname, username, date, id });
+  console.log({ firstname, lastname, username, date, id });
   return (
     <div className="card--header" onClick={() => componentActive(id)}>
       <div className="card--header--top">

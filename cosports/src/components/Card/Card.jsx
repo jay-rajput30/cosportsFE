@@ -3,10 +3,17 @@ import CardHeader from "./CardHeader/CardHeader";
 import "./Card.css";
 import LikeAndComments from "./LikeAndComments/LikeAndComments";
 
-const Card = ({ item, showComponent, componentActive, componentInactive }) => {
+const Card = ({
+  item,
+  showComponent,
+  componentActive,
+  componentInactive,
+  showModal,
+  setShowModal,
+}) => {
   const { content, likes, updatedAt: date } = item;
   const { firstName, lastName, username } = item.uid;
-
+  console.log({ item });
   return (
     <article className="card--container">
       <CardHeader
@@ -20,7 +27,11 @@ const Card = ({ item, showComponent, componentActive, componentInactive }) => {
       <CardBody id={item._id} componentActive={componentActive}>
         <p className="card--content">{content}</p>
       </CardBody>
-      <LikeAndComments post={item} />
+      <LikeAndComments
+        post={item}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </article>
   );
 };

@@ -4,7 +4,7 @@ import { BiHeart, BiCommentDetail, BiShareAlt } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import { incrementLikes, updateLikes } from "features/post/postSlice";
 
-const LikeAndComments = ({ post }) => {
+const LikeAndComments = ({ post, showModal, setShowModal }) => {
   const dispatch = useDispatch();
   const { userDetail, token, status, error } = useSelector(
     (state) => state.user
@@ -13,12 +13,13 @@ const LikeAndComments = ({ post }) => {
   const allPosts = useSelector((state) => state.posts);
 
   const likeButtonClickHandler = (post) => {
-    // const { _id: id } = post;
-    // console.log("inside like component" + token + post._id);
     dispatch(incrementLikes(post));
     dispatch(updateLikes({ token, postId: post._id }));
   };
-  // console.log({likes: post.likes, post})
+
+  const commentBtnClickHandler = () => {
+    setShowModal((prev) => ({ ...prev, status: true, type: "comment" }));
+  };
   return (
     <div className="card--like-comment--container">
       <IconContext.Provider value={{ className: "react--icon" }}>
@@ -26,7 +27,7 @@ const LikeAndComments = ({ post }) => {
         <span className="likes--count">{post.likes.length}</span>
       </IconContext.Provider>
       <IconContext.Provider value={{ className: "react--icon" }}>
-        <BiCommentDetail />
+        <BiCommentDetail onClick={commentBtnClickHandler} />
       </IconContext.Provider>
       <IconContext.Provider value={{ className: "react--icon" }}>
         <BiShareAlt />

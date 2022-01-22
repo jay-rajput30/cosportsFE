@@ -34,7 +34,7 @@ const Feeds = ({ showModal, setShowModal }) => {
       fetchPosts();
     }
   }, []);
-
+  console.log({ posts: allPosts });
   return (
     <div className="feed--container">
       {allPosts?.posts?.map((item) => {
@@ -45,12 +45,16 @@ const Feeds = ({ showModal, setShowModal }) => {
             showComponent={showComponent}
             componentActive={componentActive}
             componentInactive={componentInactive}
+            showModal={showModal}
+            setShowModal={setShowModal}
           />
         );
       })}
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
-      {showModal && <Modal showModal={showModal} setShowModal={setShowModal} />}
+      {showModal.status && (
+        <Modal showModal={showModal} setShowModal={setShowModal} />
+      )}
     </div>
   );
 };

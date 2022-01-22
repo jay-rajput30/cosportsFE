@@ -94,9 +94,9 @@ export const postSlice = createSlice({
       state.posts[postIndex] = action.payload;
     },
     [createPost.fulfilled]: (state, action) => {
-      console.log({ payload: action.payload });
+      console.log({ payload: action.payload, state });
       state.status = "fulfilled";
-      state.posts += action.payload;
+      state.posts.unshift(action.payload);
     },
     [createPost.rejected]: (state, action) => {
       state.status = "error";
