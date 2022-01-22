@@ -4,24 +4,39 @@ import { useSelector, useDispatch } from "react-redux";
 // import Button from "components/Button/Button";
 import { useState } from "react";
 import { createPost } from "features/post/postSlice";
+import { addComment } from "features/comment/commentSlice";
 
 const Modal = ({ showModal, setShowModal }) => {
   const [content, setContent] = useState("");
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const { firstName, lastName, _id: id } = user.userDetail;
+  //   const { firstName, lastName, _id: id } = user.userDetail;
 
-  //   console.log({ firstName, lastName, id });
   const postBtnClickHandler = () => {
-    dispatch(
-      createPost({
-        postData: { content, type: showModal.type },
-        token: user.token,
-      })
-    );
+    if (showModal.type === "post") {
+      dispatch(
+        createPost({
+          postData: { content, type: "post" },
+          token: user.token,
+        })
+      );
+      //   add comment api call needs to send content and post id to backend
+    } else {
+      dispatch(
+        addComment({
+          postData: { content, postId: showModal.postId },
+          token: user.token,
+        })
+      );
+    }
 
-    setShowModal(false);
+    setShowModal((prev) => ({
+      ...prev,
+      status: false,
+      type: "",
+      postId: "",
+    }));
   };
   return (
     <section className="modal--background">
@@ -43,7 +58,14 @@ const Modal = ({ showModal, setShowModal }) => {
 
         <button
           className="modal--close--btn"
-          onClick={() => setShowModal((prev) => ({ ...prev, status: false }))}
+          onClick={() =>
+            setShowModal((prev) => ({
+              ...prev,
+              status: false,
+              type: "",
+              postId: "",
+            }))
+          }
         >
           X
         </button>

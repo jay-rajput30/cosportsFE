@@ -6,7 +6,7 @@ const Button = ({ text, screen, showModal, setShowModal }) => {
     <button
       className={screen === "desktop" ? "btn" : "mobile--btn"}
       onClick={() =>
-        setShowModal((prev) => ({ ...prev, status: true, type: text }))
+        setShowModal((prev) => ({ ...prev, status: true, type: "post" }))
       }
     >
       {text}

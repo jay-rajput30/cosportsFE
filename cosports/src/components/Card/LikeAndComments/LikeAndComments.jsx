@@ -18,7 +18,12 @@ const LikeAndComments = ({ post, showModal, setShowModal }) => {
   };
 
   const commentBtnClickHandler = () => {
-    setShowModal((prev) => ({ ...prev, status: true, type: "comment" }));
+    setShowModal((prev) => ({
+      ...prev,
+      status: true,
+      type: "comment",
+      postId: post._id,
+    }));
   };
   return (
     <div className="card--like-comment--container">

@@ -11,7 +11,11 @@ import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
 function App() {
-  const [showModal, setShowModal] = useState({ status: false, type: "" });
+  const [showModal, setShowModal] = useState({
+    status: false,
+    type: "",
+    postId: "",
+  });
   return (
     <div className="main--container">
       <header className="app--header">

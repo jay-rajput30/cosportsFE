@@ -10,17 +10,29 @@ const initialState = {
 export const fetchAllComments = createAsyncThunk(
   "comments/fetchComments",
   async (token) => {
-    try {
-      const response = await axios.get("http://localhost:3003/comment", {
+    const response = await axios.get("http://localhost:3003/comment", {
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    return response.data.comments;
+  }
+);
+
+export const addComment = createAsyncThunk(
+  "comments/addComment",
+  async (postData, token) => {
+    const response = await axios.post(
+      "http://localhost:3003/comment",
+      { content: postData.content, postId: postData.postId },
+      {
         headers: {
           Authorization: token,
         },
-      });
-
-      return response.data.comments;
-    } catch (e) {
-      console.log({ error: e });
-    }
+      }
+    );
+    return response.data.comment;
   }
 );
 
@@ -39,6 +51,14 @@ export const commentSlice = createSlice({
     [fetchAllComments.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.error.message;
+    },
+    [addComment.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.error.message;
+    },
+    [addComment.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.comments.unshift(action.payload);
     },
   },
 });
