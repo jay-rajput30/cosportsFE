@@ -20,6 +20,7 @@ function App() {
   const [showComponent, setShowComponent] = useState(false);
 
   const componentActive = (id) => {
+    console.log("component active func, id:", id);
     setShowComponent((showComponent) => true);
     navigate(`/singlepost/${id}`);
   };

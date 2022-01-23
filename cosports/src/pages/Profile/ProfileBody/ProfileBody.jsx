@@ -23,6 +23,7 @@ const ProfileBody = ({
   return (
     <section className="user--posts--container">
       {userPosts.map((item) => {
+        console.log({ userPostItem: item });
         return (
           <Card
             key={item._id}

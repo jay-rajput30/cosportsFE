@@ -42,6 +42,8 @@ const Profile = ({
         setShowModal={setShowModal}
         showComponent={showComponent}
         setShowComponent={setShowComponent}
+        componentActive={componentActive}
+        componentInactive={componentInactive}
       />
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
