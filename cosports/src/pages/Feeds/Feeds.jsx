@@ -5,27 +5,25 @@ import Card from "components/Card/Card";
 import "./Feeds.css";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "components/Modal/Modal";
 
-const Feeds = ({ showModal, setShowModal }) => {
+const Feeds = ({
+  showModal,
+  setShowModal,
+  showComponent,
+  setShowComponent,
+  componentActive,
+  componentInactive,
+}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const allPosts = useSelector((state) => state.posts);
   const { userDetail, token, status, error } = useSelector(
     (state) => state.user
   );
-  const [showComponent, setShowComponent] = useState(false);
+  // const [showComponent, setShowComponent] = useState(false);
 
-  const componentActive = (id) => {
-    setShowComponent((showComponent) => true);
-    navigate(`/singlepost/${id}`);
-  };
-
-  const componentInactive = () => {
-    setShowComponent((showComponent) => false);
-  };
   useEffect(() => {
     if (allPosts.posts.length === 0) {
       const fetchPosts = async () => {

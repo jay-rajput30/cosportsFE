@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Feeds from "pages/Feeds/Feeds";
@@ -11,11 +11,23 @@ import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
 function App() {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState({
     status: false,
     type: "",
     postId: "",
   });
+  const [showComponent, setShowComponent] = useState(false);
+
+  const componentActive = (id) => {
+    setShowComponent((showComponent) => true);
+    navigate(`/singlepost/${id}`);
+  };
+
+  const componentInactive = () => {
+    setShowComponent((showComponent) => false);
+  };
+
   return (
     <div className="main--container">
       <header className="app--header">
@@ -27,7 +39,14 @@ function App() {
             path="/feeds"
             element={
               <PrivateRoute>
-                <Feeds showModal={showModal} setShowModal={setShowModal} />
+                <Feeds
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  showComponent={showComponent}
+                  setShowComponent={setShowComponent}
+                  componentActive={componentActive}
+                  componentInactive={componentInactive}
+                />
               </PrivateRoute>
             }
           />
@@ -62,7 +81,14 @@ function App() {
             path="/profile"
             element={
               <PrivateRoute>
-                <Profile showModal={showModal} setShowModal={setShowModal} />
+                <Profile
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  showComponent={showComponent}
+                  setShowComponent={setShowComponent}
+                  componentActive={componentActive}
+                  componentInactive={componentInactive}
+                />
               </PrivateRoute>
             }
           />

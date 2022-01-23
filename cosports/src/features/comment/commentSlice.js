@@ -22,9 +22,9 @@ export const fetchAllComments = createAsyncThunk(
 
 export const addComment = createAsyncThunk(
   "comments/addComment",
-  async (postData, token) => {
+  async ({ postData, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/comment",
+      "http://localhost:3003/comment/addcomment",
       { content: postData.content, postId: postData.postId },
       {
         headers: {
