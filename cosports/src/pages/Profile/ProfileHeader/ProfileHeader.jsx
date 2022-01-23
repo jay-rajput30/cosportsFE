@@ -2,20 +2,30 @@ import { getUserInitials } from "utils/cardUtils";
 import "./ProfileHeader.css";
 import { FiMapPin, FiGlobe } from "react-icons/fi";
 import { IconContext } from "react-icons";
-const ProfileHeader = ({
-  firstName,
-  lastName,
-  username,
-  bio,
-  location,
-  website,
-  followers,
-  following,
-}) => {
+import { useSelector } from "react-redux";
+
+// {
+//     firstName,
+//     lastName,
+//     username,
+//     bio,
+//     location,
+//     website,
+//     followers,
+//     following,
+//   }
+const ProfileHeader = ({ editFormActive }) => {
+  const user = useSelector((state) => state.user);
+  const { firstName, lastName, username, location, website } = user.userDetail;
+  const { bio, followers, following } = user.userDetail.userAccountDetails;
   return (
     <div className="profile--header--container">
       <ProfileHeaderTop>
-        <ProfileHeaderTopAvatar firstName={firstName} lastName={lastName} />
+        <ProfileHeaderTopAvatar
+          firstName={firstName}
+          lastName={lastName}
+          editFormActive={editFormActive}
+        />
         <ProfileHeaderTopName firstName={firstName} lastName={lastName} />
         <ProfileHeaderTopUsername username={username} />
         <ProfileHeaderTopBio bio={bio} />
@@ -41,13 +51,17 @@ export const ProfileHeaderTop = ({ children }) => {
   return <div className="profile--header--top--container">{children}</div>;
 };
 
-export const ProfileHeaderTopAvatar = ({ firstName, lastName }) => {
+export const ProfileHeaderTopAvatar = ({
+  firstName,
+  lastName,
+  editFormActive,
+}) => {
   return (
     <div className="profile--avatar--container">
       <div className="profile--avatar">
         {getUserInitials(firstName, lastName)}
       </div>
-      <button>edit</button>
+      <button onClick={editFormActive}>edit</button>
     </div>
   );
 };

@@ -4,3 +4,12 @@
   margin-top: var(--space-2);
   /* padding: var(--space-2); */
 }
+
+@media screen and (min-width: 480px) {
+  .profile--container {
+    width: 50%;
+    /* height: 100vh;
+    margin-top: var(--space-2); */
+    /* padding: var(--space-2); */
+  }
+}

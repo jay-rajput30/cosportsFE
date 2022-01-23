@@ -3,9 +3,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 80%;
   margin: var(--space-2) 0 0 2.55rem;
   /* border-top: 1px solid var(--clr-secondary); */
+  /* border: 2px solid; */
 }
 
 .react--icon {
@@ -13,11 +14,14 @@
 }
 
 .likes--count {
-  margin-left: -90px;
+  margin-left: -110px;
 }
 
 @media screen and (min-width: 840px) {
   .likes--count {
-    margin-left: -320px;
+    margin-left: -150px;
+  }
+  .card--like-comment--container {
+    width: 60%;
   }
 }
