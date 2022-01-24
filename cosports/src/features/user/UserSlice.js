@@ -12,16 +12,30 @@ const initialState = {
 export const fetchUserLogin = createAsyncThunk(
   "user/fetchUser",
   async ({ username, password }) => {
-    // try {
     const response = await axios.post("http://localhost:3003/user/singleuser", {
       username,
       password,
     });
 
     return response.data;
-    // } catch (e) {
-    //   console.log({ e });
-    // }
+  }
+);
+
+export const editUserBio = createAsyncThunk(
+  "user/editBio",
+  async ({ newBio, token }) => {
+    const response = await axios.post(
+      "http://localhost:3003/account/updatebio",
+      {
+        newBio,
+      },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    return response.data;
   }
 );
 export const UserSlice = createSlice({
@@ -41,7 +55,6 @@ export const UserSlice = createSlice({
   extraReducers: {
     [fetchUserLogin.pending]: (state, action) => {
       state.status = "loading";
-      console.log("loading");
     },
     [fetchUserLogin.fulfilled]: (state, action) => {
       state.status = "fulfilled";
@@ -50,9 +63,17 @@ export const UserSlice = createSlice({
       localStorage.setItem("userToken", JSON.stringify(state.token));
     },
     [fetchUserLogin.rejected]: (state, action) => {
-      console.log("error");
       state.status = "error";
       state.error = action.payload.err.message;
+    },
+    [editUserBio.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.payload.err.message;
+    },
+    [editUserBio.fulfilled]: (state, action) => {
+      console.log({ bioAction: action.payload });
+      state.status = "fulfilled";
+      state.userDetail.userAccountDetails = action.payload.userAccount;
     },
   },
 });

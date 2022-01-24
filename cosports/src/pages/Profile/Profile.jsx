@@ -31,29 +31,30 @@ const Profile = ({
   const editFormInactive = () => {
     setEditUser(false);
   };
-  if (editUser) {
-    return <EditProfileForm editFormInactive={editFormInactive} />;
-  } else {
-    return (
-      <article className="profile--container">
-        <ProfileHeader
-          editFormActive={editFormActive}
-          editFormInactive={editFormInactive}
-        />
-        <button onClick={logoutBtnClickHandler}>logout</button>
-        <ProfileBody
-          showModal={showModal}
-          setShowModal={setShowModal}
-          showComponent={showComponent}
-          setShowComponent={setShowComponent}
-          componentActive={componentActive}
-          componentInactive={componentInactive}
-        />
-        <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
-        <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
-      </article>
-    );
-  }
+  // if (editUser) {
+  //   return <EditProfileForm editFormInactive={editFormInactive} />;
+  // } else {
+  return (
+    <article className="profile--container">
+      <ProfileHeader
+        editUser={editUser}
+        editFormActive={editFormActive}
+        editFormInactive={editFormInactive}
+      />
+      <button onClick={logoutBtnClickHandler}>logout</button>
+      <ProfileBody
+        showModal={showModal}
+        setShowModal={setShowModal}
+        showComponent={showComponent}
+        setShowComponent={setShowComponent}
+        componentActive={componentActive}
+        componentInactive={componentInactive}
+      />
+      <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
+      <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
+    </article>
+  );
+  // }
 };
 
 export default Profile;

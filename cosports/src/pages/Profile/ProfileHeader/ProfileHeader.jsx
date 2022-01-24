@@ -3,6 +3,7 @@ import "./ProfileHeader.css";
 import { FiMapPin, FiGlobe } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
+import EditUserBio from "../EditUserBio/EditUserBio";
 
 // {
 //     firstName,
@@ -14,7 +15,7 @@ import { useSelector } from "react-redux";
 //     followers,
 //     following,
 //   }
-const ProfileHeader = ({ editFormActive }) => {
+const ProfileHeader = ({ editUser, editFormActive, editFormInactive }) => {
   const user = useSelector((state) => state.user);
   const { firstName, lastName, username, location, website } = user.userDetail;
   const { bio, followers, following } = user.userDetail.userAccountDetails;
@@ -28,7 +29,12 @@ const ProfileHeader = ({ editFormActive }) => {
         />
         <ProfileHeaderTopName firstName={firstName} lastName={lastName} />
         <ProfileHeaderTopUsername username={username} />
-        <ProfileHeaderTopBio bio={bio} />
+        <ProfileHeaderTopBio
+          bio={bio}
+          editUser={editUser}
+          editFormActive={editFormActive}
+          editFormInactive={editFormInactive}
+        />
       </ProfileHeaderTop>
       <ProfileHeaderBottom>
         <ProfileHeaderBottomLocation location={location} />
@@ -61,6 +67,8 @@ export const ProfileHeaderTopAvatar = ({
       <div className="profile--avatar">
         {getUserInitials(firstName, lastName)}
       </div>
+      {/* TODO: add edit user details feature */}
+
       <button onClick={editFormActive}>edit</button>
     </div>
   );
@@ -73,8 +81,17 @@ export const ProfileHeaderTopUsername = ({ username }) => {
   return <p className="profile--username">{username}</p>;
 };
 
-export const ProfileHeaderTopBio = ({ bio }) => {
-  return <p className="profile--bio">{bio}</p>;
+export const ProfileHeaderTopBio = ({
+  bio,
+  editUser,
+  editFormActive,
+  editFormInactive,
+}) => {
+  return editUser ? (
+    <EditUserBio editFormInactive={editFormInactive} />
+  ) : (
+    <p className="profile--bio">{bio}</p>
+  );
 };
 
 export const ProfileHeaderBottom = ({ children }) => {
