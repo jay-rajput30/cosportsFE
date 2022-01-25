@@ -1,0 +1,39 @@
+.user--card--container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid var(--clr-secondary);
+  padding: var(--space-1);
+}
+
+.user--card--avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: var(--length-md-3);
+  text-align: center;
+  background-color: var(--clr-secondary);
+  color: var(--clr-black);
+  padding-top: 7px;
+  border: 2px solid;
+}
+
+.user--card--details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: var(--space-1);
+  /* border: 2px solid salmon; */
+}
+
+.user--card--name {
+  font-size: var(--length-md-3);
+}
+.user--card--username {
+  margin-top: -3px;
+  /* border: 2px solid; */
+  color: var(--clr-font-label);
+  font-size: var(--length-md-1);
+}

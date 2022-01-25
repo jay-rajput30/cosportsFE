@@ -9,15 +9,24 @@ const initialState = {
   token: null,
 };
 
-export const getAllUsers = createAsyncThunk("users/fetchAllUsers", async () => {
-  const response = await axios.get("http:localhost:3003/user/");
+export const getAllUsers = createAsyncThunk(
+  "users/fetchAllUsers",
+  async (token) => {
+    const response = await axios.get("http://localhost:3003/user", {
+      headers: {
+        Authorization: token,
+      },
+    });
 
-  return response.data;
-});
+    return response.data;
+  }
+);
 export const UsersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    findUsername: (state, action) => {},
+  },
   extraReducers: {
     [getAllUsers.fulfilled]: (state, action) => {
       state.status = "fulfilled";
