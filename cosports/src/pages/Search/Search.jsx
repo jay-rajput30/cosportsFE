@@ -30,9 +30,13 @@ const Search = ({ showModal, setShowModal }) => {
       <SearchInput setUserSearched={setUserSearched} />
 
       <article className="user--found--container">
-        {userFound.map((user) => {
-          return <UserCard key={user._id} user={user} />;
-        })}
+        {userFound.length === 0 ? (
+          <p>no user found. please try again</p>
+        ) : (
+          userFound.map((user) => {
+            return <UserCard key={user._id} user={user} />;
+          })
+        )}
       </article>
 
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />

@@ -10,6 +10,7 @@ import Profile from "pages/Profile/Profile";
 import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
+
 function App() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState({

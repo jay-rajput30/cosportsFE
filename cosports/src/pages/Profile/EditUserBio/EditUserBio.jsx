@@ -3,26 +3,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { editUserBio } from "features/user/UserSlice";
 
-const EditUserBio = ({ editFormInactive }) => {
-  const dispatch = useDispatch();
+const EditUserBio = ({
+  editFormInactive,
+  updatedUserDetails,
+  setUpdatedUserDetails,
+}) => {
   const user = useSelector((state) => state.user);
   const { bio } = user.userDetail.userAccountDetails;
   const [newBio, setNewBio] = useState(bio);
 
-  const saveBtnClickHandler = () => {
-    dispatch(editUserBio({ newBio, token: user.token }));
-    editFormInactive();
-  };
+  const saveBtnClickHandler = () => {};
   return (
     <div className="user--bio--container">
       <input
         type="text"
-        value={newBio}
-        onChange={(e) => setNewBio(e.target.value)}
+        value={updatedUserDetails.newBio}
+        onChange={(e) =>
+          setUpdatedUserDetails((prev) => ({ ...prev, newBio: e.target.value }))
+        }
       />
-      <button className="user--bio--save--btn" onClick={saveBtnClickHandler}>
+      {/* <button className="user--bio--save--btn" onClick={saveBtnClickHandler}>
         save
-      </button>
+      </button> */}
       {/* <button onCLick={editFormInactive}>close</button> */}
     </div>
   );
