@@ -6,9 +6,10 @@ export const getDateFormat = (date) => {
   }/${formatDate.getFullYear()}`;
 };
 
-export const getUserInitials = (firstName, lastName) => {
+export const getUserInitials = (firstName, lastName = "") => {
   // console.log({ firstName, lastName });
-  return (
-    firstName.split("")[0].toUpperCase() + lastName.split("")[0].toUpperCase()
-  );
+  const first = firstName.split("")[0].toUpperCase();
+
+  const last = lastName.length !== 0 ? lastName.split("")[0].toUpperCase() : "";
+  return first + " " + last;
 };

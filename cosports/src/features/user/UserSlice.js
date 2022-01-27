@@ -23,11 +23,11 @@ export const fetchUserLogin = createAsyncThunk(
 
 export const editUserBio = createAsyncThunk(
   "user/editBio",
-  async ({ newBio, token }) => {
+  async ({ updatedUserDetails, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/account/updatebio",
+      "http://localhost:3003/account/updatedetail",
       {
-        newBio,
+        updatedUserDetails,
       },
       {
         headers: {
@@ -51,6 +51,17 @@ export const UserSlice = createSlice({
     updateToken: (state, action) => {
       state.token = action.payload;
     },
+    updateUser: (state, action) => {
+      console.log({
+        payload: action.payload.newFullName,
+        state: state.userDetail.firstName,
+      });
+      const [fName, lName] = action.payload.newFullName.trim().split(" ");
+
+      state.userDetail.firstName = fName;
+      state.userDetail.lastName = lName === undefined ? "" : lName;
+      state.userDetail.userAccountDetails.bio = action.payload.newBio;
+    },
   },
   extraReducers: {
     [fetchUserLogin.pending]: (state, action) => {
@@ -71,7 +82,7 @@ export const UserSlice = createSlice({
       state.error = action.payload.err.message;
     },
     [editUserBio.fulfilled]: (state, action) => {
-      console.log({ bioAction: action.payload });
+      // console.log({ bioAction: action.payload });
       state.status = "fulfilled";
       state.userDetail.userAccountDetails = action.payload.userAccount;
     },
@@ -82,5 +93,5 @@ export const UserSlice = createSlice({
 // set thunk
 // set extra reducers
 
-export const { logoutUser, updateToken } = UserSlice.actions;
+export const { logoutUser, updateToken, updateUser } = UserSlice.actions;
 export default UserSlice.reducer;

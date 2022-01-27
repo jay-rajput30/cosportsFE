@@ -5,7 +5,11 @@ import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 import EditUserBio from "../EditUserBio/EditUserBio";
 import { useDispatch } from "react-redux";
-import { editUserBio } from "features/user/UserSlice";
+import {
+  editUserBio,
+  fetchUserLogin,
+  updateUser,
+} from "features/user/UserSlice";
 import { useState } from "react";
 import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
@@ -37,6 +41,7 @@ const ProfileHeader = ({ editUser, editFormActive, editFormInactive }) => {
           editUser={editUser}
           editFormActive={editFormActive}
           editFormInactive={editFormInactive}
+          updatedUserDetails={updatedUserDetails}
         />
         <ProfileHeaderTopName
           firstName={firstName}
@@ -82,10 +87,14 @@ export const ProfileHeaderTopAvatar = ({
   editUser,
   editFormActive,
   editFormInactive,
+  updatedUserDetails,
 }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const saveEditedDetialsClickHandler = () => {
-    // dispatch(editUserBio({ newBio, token: user.token }));
+    dispatch(editUserBio({ updatedUserDetails, token: user.token }));
+    console.log("inside rpfile header avatar", updatedUserDetails);
+    dispatch(updateUser(updatedUserDetails));
     editFormInactive();
   };
   return (

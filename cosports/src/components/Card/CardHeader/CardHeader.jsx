@@ -2,14 +2,14 @@ import { getDateFormat, getUserInitials } from "utils/cardUtils";
 import "./CardHeader.css";
 
 const CardHeader = ({
-  firstname,
-  lastname,
+  firstname = "",
+  lastname = "",
   username,
   date,
   id,
   componentActive,
 }) => {
-  console.log({ firstname, lastname, username, date, id });
+  // console.log({ firstname, lastname, username, date, id });
   return (
     <div className="card--header" onClick={() => componentActive(id)}>
       <div className="card--header--top">

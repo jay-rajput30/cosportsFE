@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const EditUserFullName = ({
   //   editFormInactive,
   updatedUserDetails,
   setUpdatedUserDetails,
 }) => {
-  const [newFullName, setNewFullName] = useState();
+  // const [newFullName, setNewFullName] = useState();
   return (
     <div className="user--fullname--container ">
       <input

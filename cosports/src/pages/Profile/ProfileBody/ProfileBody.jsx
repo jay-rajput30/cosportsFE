@@ -19,11 +19,13 @@ const ProfileBody = ({
   const userPosts = allPosts.posts.filter(
     (item) => item.uid._id === user.userDetail._id
   );
-  console.log({ userPosts, user });
+  // console.log({ userPosts, user });
   return (
     <section className="user--posts--container">
       {userPosts.map((item) => {
-        console.log({ userPostItem: item });
+        {
+          /* console.log({ userPostItem: item }); */
+        }
         return (
           <Card
             key={item._id}
