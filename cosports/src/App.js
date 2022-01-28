@@ -10,6 +10,7 @@ import Profile from "pages/Profile/Profile";
 import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
+import ViewProfile from "pages/ViewProfile/ViewProfile";
 
 function App() {
   const navigate = useNavigate();
@@ -94,10 +95,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/feeds" element={<Feeds />} />
-          <Route path="/singlepost/:id" element={<SinglePost />} /> */}
+          <Route
+            path="/viewprofile/:id"
+            element={
+              <PrivateRoute>
+                <ViewProfile />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </header>
     </div>

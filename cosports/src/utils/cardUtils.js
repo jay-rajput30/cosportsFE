@@ -11,5 +11,5 @@ export const getUserInitials = (firstName, lastName = "") => {
   const first = firstName.split("")[0].toUpperCase();
 
   const last = lastName.length !== 0 ? lastName.split("")[0].toUpperCase() : "";
-  return first + " " + last;
+  return first + last;
 };

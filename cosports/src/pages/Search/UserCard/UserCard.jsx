@@ -1,10 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { getUserInitials } from "utils/cardUtils";
 import "./UserCard.css";
 
 const UserCard = ({ user }) => {
+  const navigate = useNavigate();
   const { firstName, lastName, username } = user;
+  const userCardClickHandler = (user) => {
+    console.log({ user });
+    navigate(`/viewprofile/${user._id}`);
+  };
   return (
-    <div className="user--card--container">
+    <div
+      className="user--card--container"
+      onClick={() => userCardClickHandler(user)}
+    >
       <div className="user--card--avatar">
         {getUserInitials(firstName, lastName)}
       </div>
