@@ -99,7 +99,10 @@ function App() {
             path="/viewprofile/:id"
             element={
               <PrivateRoute>
-                <ViewProfile />
+                <ViewProfile
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                />
               </PrivateRoute>
             }
           />

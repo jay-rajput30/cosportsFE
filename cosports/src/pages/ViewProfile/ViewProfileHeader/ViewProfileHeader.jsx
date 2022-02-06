@@ -1,21 +1,16 @@
 import { getUserInitials } from "utils/cardUtils";
-import "./ProfileHeader.css";
+import "./ViewProfileHeader.css";
 import { FiMapPin, FiGlobe } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
-import EditUserBio from "../EditUserBio/EditUserBio";
+// import EditUserBio from "../EditUserBio/EditUserBio";
 import { useDispatch } from "react-redux";
-import {
-  editUserBio,
-  fetchUserLogin,
-  updateUser,
-} from "features/user/UserSlice";
+import { editUserBio, updateUser } from "features/user/UserSlice";
 import { useState } from "react";
-import EditUserFullName from "../EditUserFullName/EditUserFullName";
+// import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
-const ProfileHeader = ({ editUser, editFormActive, editFormInactive }) => {
-  const user = useSelector((state) => state.user);
-  const { firstName, lastName, username, location, website } = user.userDetail;
+const ViewProfileHeader = ({ user }) => {
+  const { firstName, lastName, username, location, website } = user;
   const { bio, followers, following } = user.userDetail.userAccountDetails;
 
   const [updatedUserDetails, setUpdatedUserDetails] = useState({
@@ -28,24 +23,17 @@ const ProfileHeader = ({ editUser, editFormActive, editFormInactive }) => {
         <ProfileHeaderTopAvatar
           firstName={firstName}
           lastName={lastName}
-          editUser={editUser}
-          editFormActive={editFormActive}
-          editFormInactive={editFormInactive}
           updatedUserDetails={updatedUserDetails}
         />
         <ProfileHeaderTopName
           firstName={firstName}
           lastName={lastName}
-          editUser={editUser}
           updatedUserDetails={updatedUserDetails}
           setUpdatedUserDetails={setUpdatedUserDetails}
         />
         <ProfileHeaderTopUsername username={username} />
         <ProfileHeaderTopBio
           bio={bio}
-          editUser={editUser}
-          editFormActive={editFormActive}
-          editFormInactive={editFormInactive}
           updatedUserDetails={updatedUserDetails}
           setUpdatedUserDetails={setUpdatedUserDetails}
         />
@@ -111,15 +99,7 @@ export const ProfileHeaderTopName = ({
   updatedUserDetails,
   setUpdatedUserDetails,
 }) => {
-  return editUser ? (
-    <EditUserFullName
-      // editFormInactive={editFormInactive}
-      updatedUserDetails={updatedUserDetails}
-      setUpdatedUserDetails={setUpdatedUserDetails}
-    />
-  ) : (
-    <h5 className="profile--name">{firstName + " " + lastName}</h5>
-  );
+  return <h5 className="profile--name">{firstName + " " + lastName}</h5>;
 };
 
 export const ProfileHeaderTopUsername = ({ username }) => {
@@ -134,15 +114,7 @@ export const ProfileHeaderTopBio = ({
   updatedUserDetails,
   setUpdatedUserDetails,
 }) => {
-  return editUser ? (
-    <EditUserBio
-      editFormInactive={editFormInactive}
-      updatedUserDetails={updatedUserDetails}
-      setUpdatedUserDetails={setUpdatedUserDetails}
-    />
-  ) : (
-    <p className="profile--bio">{bio}</p>
-  );
+  return <p className="profile--bio">{bio}</p>;
 };
 
 export const ProfileHeaderBottom = ({ children }) => {
@@ -173,4 +145,4 @@ export const ProfileHeaderBottomWebsite = ({ website }) => {
     </a>
   );
 };
-export default ProfileHeader;
+export default ViewProfileHeader;

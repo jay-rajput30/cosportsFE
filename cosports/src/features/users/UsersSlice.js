@@ -4,6 +4,7 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const initialState = {
   users: [],
+  searchedAccounts: [],
   status: "idle",
   error: null,
   token: null,
@@ -21,6 +22,23 @@ export const getAllUsers = createAsyncThunk(
     return response.data;
   }
 );
+
+export const getAccountDetail = createAsyncThunk(
+  "users/getAccount",
+  async ({ searchTerm, token }) => {
+    console.log({ searchTerm, token });
+    const response = await axios.post(
+      "http://localhost:3003/account/accountdetail",
+      { searchTerm },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    return response.data;
+  }
+);
 export const UsersSlice = createSlice({
   name: "users",
   initialState,
@@ -35,6 +53,14 @@ export const UsersSlice = createSlice({
     [getAllUsers.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.payload.err.message;
+    },
+    [getAccountDetail.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.searchedAccounts = action.payload.accounts;
+    },
+    [getAccountDetail.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.payload.e.message;
     },
   },
 });

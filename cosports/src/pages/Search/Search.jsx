@@ -1,6 +1,6 @@
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
-import { getAllUsers } from "features/users/UsersSlice";
+import { getAccountDetail, getAllUsers } from "features/users/UsersSlice";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -10,27 +10,34 @@ import UserCard from "./UserCard/UserCard";
 const Search = ({ showModal, setShowModal }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-
+  const [showComponent, setShowComponent] = useState(false);
   const [userSearched, setUserSearched] = useState();
   const users = useSelector((state) => state.users);
+  const [userFound, setUserFound] = useState([]);
 
-  const userFound = users.users.filter(
-    (item) => item.username === userSearched
-  );
-  console.log(userFound);
+  console.log({ accout: users.searchedAccounts });
+
   useEffect(() => {
     const fetchUsers = async () => {
       dispatch(getAllUsers(user.token));
+      setUserFound(users.searchedAccounts);
     };
 
     fetchUsers();
   }, []);
   return (
     <div className="search--container">
-      <SearchInput setUserSearched={setUserSearched} />
+      <SearchInput
+        setUserSearched={setUserSearched}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        showComponent={showComponent}
+        setShowComponent={setShowComponent}
+        setUserFound={setUserFound}
+      />
 
       <article className="user--found--container">
-        {userFound.length === 0 ? (
+        {userFound.length === 0 && showComponent === false ? (
           <p>no user found. please try again</p>
         ) : (
           userFound.map((user) => {
@@ -44,27 +51,41 @@ const Search = ({ showModal, setShowModal }) => {
     </div>
   );
 };
-const SearchInput = ({ setUserSearched }) => {
-  // const dispatch = useDispatch();
+const SearchInput = ({
+  setUserSearched,
+  showModal,
+  setShowModal,
+  showComponent,
+  setShowComponent,
+  setUserFound,
+}) => {
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
+  const user = useSelector((state) => state.user);
   const searchKeyPressHandler = (e) => {
     // setSearchTerm((prev) => prev + e.key);
+    setUserSearched((prev) => searchTerm);
 
     if (e.key === "Enter") {
       console.log(searchTerm);
-      setUserSearched((prev) => searchTerm);
+      setShowComponent(true);
       setSearchTerm((prev) => "");
+      dispatch(getAccountDetail({ searchTerm, token: user.token }));
     }
   };
   return (
-    <input
-      type="text"
-      className="search--input"
-      placeholder="type username and hit enter"
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      onKeyPress={(e) => searchKeyPressHandler(e)}
-    />
+    <>
+      <input
+        type="text"
+        className="search--input"
+        placeholder="type username and hit enter"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={(e) => searchKeyPressHandler(e)}
+      />
+      <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
+      <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
+    </>
   );
 };
 
