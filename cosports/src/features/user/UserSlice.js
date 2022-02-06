@@ -38,6 +38,21 @@ export const editUserBio = createAsyncThunk(
     return response.data;
   }
 );
+
+export const followAccount = createAsyncThunk(
+  "user/followaccount",
+  async ({ accountToFollowId, token }) => {
+    const response = await axios.post(
+      "http://localhost:3003/account/followuser",
+      { accountToFollowId },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+  }
+);
 export const UserSlice = createSlice({
   name: "user",
   initialState,
@@ -82,9 +97,15 @@ export const UserSlice = createSlice({
       state.error = action.payload.err.message;
     },
     [editUserBio.fulfilled]: (state, action) => {
-      // console.log({ bioAction: action.payload });
       state.status = "fulfilled";
       state.userDetail.userAccountDetails = action.payload.userAccount;
+    },
+    [followAccount.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.payload.err.message;
+    },
+    [followAccount.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
     },
   },
 });

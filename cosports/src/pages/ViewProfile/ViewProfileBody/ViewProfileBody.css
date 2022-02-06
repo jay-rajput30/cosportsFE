@@ -1,0 +1,4 @@
+.user--posts--container {
+  border-top: 2px solid var(--clr-secondary);
+  width: 100%;
+}

@@ -4,10 +4,10 @@ import "./UserCard.css";
 
 const UserCard = ({ user }) => {
   const navigate = useNavigate();
-  const { firstName, lastName, username } = user;
+  const { firstName, lastName, username } = user.uid;
   const userCardClickHandler = (user) => {
     console.log({ user });
-    navigate(`/viewprofile/${user._id}`);
+    navigate(`/viewprofile/${user.uid._id}`);
   };
   return (
     <div

@@ -13,14 +13,14 @@ const Search = ({ showModal, setShowModal }) => {
   const [showComponent, setShowComponent] = useState(false);
   const [userSearched, setUserSearched] = useState();
   const users = useSelector((state) => state.users);
-  const [userFound, setUserFound] = useState([]);
+  const userFound = useSelector((state) => state.users);
 
-  console.log({ accout: users.searchedAccounts });
+  console.log({ userFound: userFound });
 
   useEffect(() => {
     const fetchUsers = async () => {
       dispatch(getAllUsers(user.token));
-      setUserFound(users.searchedAccounts);
+      // setUserFound(users.searchedAccounts);
     };
 
     fetchUsers();
@@ -33,19 +33,21 @@ const Search = ({ showModal, setShowModal }) => {
         setShowModal={setShowModal}
         showComponent={showComponent}
         setShowComponent={setShowComponent}
-        setUserFound={setUserFound}
+        // setUserFound={setUserFound}
       />
-
       <article className="user--found--container">
-        {userFound.length === 0 && showComponent === false ? (
+        {userFound.searchedAccounts.length === 0 ? (
           <p>no user found. please try again</p>
         ) : (
-          userFound.map((user) => {
+          userFound.searchedAccounts.map((user) => {
+            {
+              console.log({ user });
+            }
             return <UserCard key={user._id} user={user} />;
           })
         )}
       </article>
-
+      {/* if( userFound.length > 0){} */}
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
     </div>

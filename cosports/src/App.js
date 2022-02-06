@@ -102,6 +102,10 @@ function App() {
                 <ViewProfile
                   showModal={showModal}
                   setShowModal={setShowModal}
+                  showComponent={showComponent}
+                  setShowComponent={setShowComponent}
+                  componentActive={componentActive}
+                  componentInactive={componentInactive}
                 />
               </PrivateRoute>
             }

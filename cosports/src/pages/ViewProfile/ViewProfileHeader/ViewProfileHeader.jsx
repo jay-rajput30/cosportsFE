@@ -5,14 +5,19 @@ import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 // import EditUserBio from "../EditUserBio/EditUserBio";
 import { useDispatch } from "react-redux";
-import { editUserBio, updateUser } from "features/user/UserSlice";
+import {
+  editUserBio,
+  followAccount,
+  updateUser,
+} from "features/user/UserSlice";
 import { useState } from "react";
+import { getAllUsers } from "features/users/UsersSlice";
 // import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
 const ViewProfileHeader = ({ user }) => {
-  const { firstName, lastName, username, location, website } = user;
-  const { bio, followers, following } = user.userDetail.userAccountDetails;
-
+  const { firstName, lastName, username, location, website } = user.uid;
+  const { bio, followers, following } = user;
+  console.log({ user });
   const [updatedUserDetails, setUpdatedUserDetails] = useState({
     newBio: bio,
     newFullName: firstName + " " + lastName,
@@ -24,6 +29,7 @@ const ViewProfileHeader = ({ user }) => {
           firstName={firstName}
           lastName={lastName}
           updatedUserDetails={updatedUserDetails}
+          user={user}
         />
         <ProfileHeaderTopName
           firstName={firstName}
@@ -66,28 +72,33 @@ export const ProfileHeaderTopAvatar = ({
   editFormActive,
   editFormInactive,
   updatedUserDetails,
+  user,
 }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  const saveEditedDetialsClickHandler = () => {
-    dispatch(editUserBio({ updatedUserDetails, token: user.token }));
-    // console.log("inside rpfile header avatar", updatedUserDetails);
-    dispatch(updateUser(updatedUserDetails));
-    editFormInactive();
+  const userStored = useSelector((state) => state.user);
+  // const saveEditedDetialsClickHandler = () => {
+  //   dispatch(editUserBio({ updatedUserDetails, token: user.token }));
+  //   // console.log("inside rpfile header avatar", updatedUserDetails);
+  //   dispatch(updateUser(updatedUserDetails));
+  //   editFormInactive();
+  // };
+  const followBtnClickHandler = (e) => {
+    dispatch(
+      followAccount({
+        accountToFollowId: user.uid._id,
+        token: userStored.token,
+      })
+    );
+    dispatch(getAllUsers(userStored.token));
   };
   return (
     <div className="profile--avatar--container">
       <div className="profile--avatar">
         {getUserInitials(firstName, lastName)}
       </div>
-      {/* TODO: add edit user details feature */}
 
       <div>
-        {editUser === false && <button onClick={editFormActive}>edit</button>}
-        {editUser && (
-          <button onClick={saveEditedDetialsClickHandler}>save</button>
-        )}
-        {editUser && <button onClick={editFormInactive}>cancel</button>}
+        <button onClick={followBtnClickHandler}>follow</button>
       </div>
     </div>
   );
