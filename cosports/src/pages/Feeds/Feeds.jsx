@@ -35,19 +35,22 @@ const Feeds = ({
   console.log({ posts: allPosts });
   return (
     <div className="feed--container">
-      {allPosts?.posts?.map((item) => {
-        return (
-          <Card
-            key={item._id}
-            item={item}
-            showComponent={showComponent}
-            componentActive={componentActive}
-            componentInactive={componentInactive}
-            showModal={showModal}
-            setShowModal={setShowModal}
-          />
-        );
-      })}
+      <div className="feed--card--container">
+        {allPosts?.posts?.map((item) => {
+          return (
+            <Card
+              key={item._id}
+              item={item}
+              showComponent={showComponent}
+              componentActive={componentActive}
+              componentInactive={componentInactive}
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
+          );
+        })}
+      </div>
+
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
       {showModal.status && (

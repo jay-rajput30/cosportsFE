@@ -2,6 +2,7 @@
   width: 100%;
   margin-bottom: 2.7rem;
   position: relative;
+  /* padding: var(--space-2); */
 }
 
 @media screen and (min-width: 480px) {
@@ -12,5 +13,10 @@
     flex-direction: column;
     position: relative;
     width: 40%;
+  }
+
+  .feed--card--container {
+    padding: vara(--space-1);
+    border: 5px solid red;
   }
 }

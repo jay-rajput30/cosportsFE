@@ -15,12 +15,12 @@
 }
 
 .likes--count {
-  margin-left: -130px;
+  margin-left: -110px;
 }
 
-@media screen and (min-width: 840px) {
+@media screen and (min-width: 480px) {
   .likes--count {
-    margin-left: -210px;
+    margin-left: -190px;
   }
   .card--like-comment--container {
     /* padding: 0 var(--space-3); */

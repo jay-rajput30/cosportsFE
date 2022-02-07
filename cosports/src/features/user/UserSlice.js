@@ -20,7 +20,15 @@ export const fetchUserLogin = createAsyncThunk(
     return response.data;
   }
 );
+export const getUser = createAsyncThunk("user/getUser", async (token) => {
+  const response = await axios.get("http://localhost:3003/user/singleuser", {
+    headers: {
+      Authorization: token,
+    },
+  });
 
+  return response.data;
+});
 export const editUserBio = createAsyncThunk(
   "user/editBio",
   async ({ updatedUserDetails, token }) => {
@@ -106,6 +114,14 @@ export const UserSlice = createSlice({
     },
     [followAccount.fulfilled]: (state, action) => {
       state.status = "fulfilled";
+    },
+    [getUser.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.userDetail = action.payload.user;
+    },
+    [getUser.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.payload.err.message;
     },
   },
 });

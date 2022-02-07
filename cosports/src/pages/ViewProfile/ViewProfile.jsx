@@ -31,7 +31,7 @@ const ViewProfile = ({
   };
 
   return (
-    <>
+    <div className="view--profile--container">
       <IconContext.Provider value={{ className: "view--profile--back--icon" }}>
         <BiArrowBack onClick={backButtonClickHandler} />
       </IconContext.Provider>
@@ -48,7 +48,7 @@ const ViewProfile = ({
       {showModal.status && (
         <Modal showModal={showModal} setShowModal={setShowModal} />
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,9 +1,9 @@
 .card--container {
   /* border: 2px solid red; */
-  width: 100%;
+  /* width: 100%; */
   padding: var(--space-3);
   border: 1px solid var(--clr-secondary);
-  margin: var(--space-2) 0;
+  margin: var(--space-2);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -16,6 +16,7 @@
 @media screen and (min-width: 480px) {
   .card--container {
     width: 100%;
+    margin: var(--space-2);
     /* border: 2px solid red; */
   }
 }

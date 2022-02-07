@@ -4,3 +4,15 @@
   margin-left: -330px;
   margin-top: 15px;
 }
+.view--profile--container {
+  width: 100%;
+  /* padding: var(--space-1); */
+}
+
+@media screen and (min-width: 480px) {
+  .view--profile--container {
+    width: 40%;
+    /* padding: var(--space-1); */
+    /* border: 2px solid salmon; */
+  }
+}

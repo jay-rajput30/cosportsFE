@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import {
   editUserBio,
   followAccount,
+  getUser,
   updateUser,
 } from "features/user/UserSlice";
 import { useEffect, useState } from "react";
@@ -15,34 +16,32 @@ import { getAccountDetail, getAllUsers } from "features/users/UsersSlice";
 // import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
 const ViewProfileHeader = ({ user }) => {
+  const storedUser = useSelector((state) => state.user);
   const { firstName, lastName, username, location, website } = user.uid;
   const { bio, followers, following } = user;
-  console.log({ user });
-  const [updatedUserDetails, setUpdatedUserDetails] = useState({
-    newBio: bio,
-    newFullName: firstName + " " + lastName,
+
+  const alreadyFollowing = user.following.includes(storedUser.userDetail._id);
+  console.log({
+    followingId: user.following,
+    userId: storedUser.userDetail._id,
+    alreadyFollowing,
   });
+  // const [updatedUserDetails, setUpdatedUserDetails] = useState({
+  //   newBio: bio,
+  //   newFullName: firstName + " " + lastName,
+  // });
   return (
-    <div className="profile--header--container">
+    <div className="view--profile--header--container">
       <ProfileHeaderTop>
         <ProfileHeaderTopAvatar
           firstName={firstName}
           lastName={lastName}
-          updatedUserDetails={updatedUserDetails}
           user={user}
+          alreadyFollowing={alreadyFollowing}
         />
-        <ProfileHeaderTopName
-          firstName={firstName}
-          lastName={lastName}
-          updatedUserDetails={updatedUserDetails}
-          setUpdatedUserDetails={setUpdatedUserDetails}
-        />
+        <ProfileHeaderTopName firstName={firstName} lastName={lastName} />
         <ProfileHeaderTopUsername username={username} />
-        <ProfileHeaderTopBio
-          bio={bio}
-          updatedUserDetails={updatedUserDetails}
-          setUpdatedUserDetails={setUpdatedUserDetails}
-        />
+        <ProfileHeaderTopBio bio={bio} />
       </ProfileHeaderTop>
       <ProfileHeaderBottom>
         <ProfileHeaderBottomLocation location={location} />
@@ -70,16 +69,16 @@ export const ProfileHeaderTop = ({ children }) => {
 // editFormInactive,
 // updatedUserDetails,
 
-export const ProfileHeaderTopAvatar = ({ firstName, lastName, user }) => {
+export const ProfileHeaderTopAvatar = ({
+  firstName,
+  lastName,
+  user,
+  alreadyFollowing,
+}) => {
   const dispatch = useDispatch();
   const userStored = useSelector((state) => state.user);
-  const [follow, setFollow] = useState(false);
-  // const saveEditedDetialsClickHandler = () => {
-  //   dispatch(editUserBio({ updatedUserDetails, token: user.token }));
-  //   // console.log("inside rpfile header avatar", updatedUserDetails);
-  //   dispatch(updateUser(updatedUserDetails));
-  //   editFormInactive();
-  // };
+  const [follow, setFollow] = useState(alreadyFollowing);
+
   useEffect(() => {
     const fetchAccountDetails = async () => {
       dispatch(
@@ -88,6 +87,7 @@ export const ProfileHeaderTopAvatar = ({ firstName, lastName, user }) => {
           token: userStored.token,
         })
       );
+      dispatch(getUser(userStored.token));
     };
     fetchAccountDetails();
   }, [follow]);
@@ -99,7 +99,7 @@ export const ProfileHeaderTopAvatar = ({ firstName, lastName, user }) => {
       })
     );
     dispatch(getAllUsers(userStored.token));
-    setFollow((prev) => (prev ? false : true));
+    setFollow((prev) => (prev === true ? false : true));
   };
   return (
     <div className="profile--avatar--container">
