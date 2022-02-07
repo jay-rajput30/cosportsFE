@@ -10,8 +10,8 @@ import {
   followAccount,
   updateUser,
 } from "features/user/UserSlice";
-import { useState } from "react";
-import { getAllUsers } from "features/users/UsersSlice";
+import { useEffect, useState } from "react";
+import { getAccountDetail, getAllUsers } from "features/users/UsersSlice";
 // import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
 const ViewProfileHeader = ({ user }) => {
@@ -65,23 +65,32 @@ export const ProfileHeaderTop = ({ children }) => {
   return <div className="profile--header--top--container">{children}</div>;
 };
 
-export const ProfileHeaderTopAvatar = ({
-  firstName,
-  lastName,
-  editUser,
-  editFormActive,
-  editFormInactive,
-  updatedUserDetails,
-  user,
-}) => {
+// editUser,
+// editFormActive,
+// editFormInactive,
+// updatedUserDetails,
+
+export const ProfileHeaderTopAvatar = ({ firstName, lastName, user }) => {
   const dispatch = useDispatch();
   const userStored = useSelector((state) => state.user);
+  const [follow, setFollow] = useState(false);
   // const saveEditedDetialsClickHandler = () => {
   //   dispatch(editUserBio({ updatedUserDetails, token: user.token }));
   //   // console.log("inside rpfile header avatar", updatedUserDetails);
   //   dispatch(updateUser(updatedUserDetails));
   //   editFormInactive();
   // };
+  useEffect(() => {
+    const fetchAccountDetails = async () => {
+      dispatch(
+        getAccountDetail({
+          searchTerm: user.uid.username,
+          token: userStored.token,
+        })
+      );
+    };
+    fetchAccountDetails();
+  }, [follow]);
   const followBtnClickHandler = (e) => {
     dispatch(
       followAccount({
@@ -90,6 +99,7 @@ export const ProfileHeaderTopAvatar = ({
       })
     );
     dispatch(getAllUsers(userStored.token));
+    setFollow((prev) => (prev ? false : true));
   };
   return (
     <div className="profile--avatar--container">
@@ -98,7 +108,11 @@ export const ProfileHeaderTopAvatar = ({
       </div>
 
       <div>
-        <button onClick={followBtnClickHandler}>follow</button>
+        {follow ? (
+          <button onClick={followBtnClickHandler}>unfollow</button>
+        ) : (
+          <button onClick={followBtnClickHandler}>follow</button>
+        )}
       </div>
     </div>
   );

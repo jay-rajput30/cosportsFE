@@ -1,9 +1,10 @@
 .card--container {
   /* border: 2px solid red; */
   width: 100%;
-  padding: var(--space-1);
-  border-bottom: 1px solid var(--clr-secondary);
-  margin: var(--space-1) 0;
+  padding: var(--space-3);
+  border: 1px solid var(--clr-secondary);
+  margin: var(--space-2) 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card--content {
@@ -14,7 +15,7 @@
 
 @media screen and (min-width: 480px) {
   .card--container {
-    max-width: 60%;
+    width: 100%;
     /* border: 2px solid red; */
   }
 }

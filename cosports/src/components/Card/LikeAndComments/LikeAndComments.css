@@ -3,8 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
-  margin: var(--space-2) 0 0 2.55rem;
+  width: 100%;
+  /* margin: var(--space-2) 0 0 2.55rem; */
+
   /* border-top: 1px solid var(--clr-secondary); */
   /* border: 2px solid; */
 }
@@ -14,14 +15,16 @@
 }
 
 .likes--count {
-  margin-left: -110px;
+  margin-left: -130px;
 }
 
 @media screen and (min-width: 840px) {
   .likes--count {
-    margin-left: -150px;
+    margin-left: -210px;
   }
   .card--like-comment--container {
-    width: 60%;
+    /* padding: 0 var(--space-3); */
+    margin-bottom: var(--space-1);
+    width: 100%;
   }
 }

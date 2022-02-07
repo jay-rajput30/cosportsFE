@@ -1,3 +1,4 @@
+import Modal from "components/Modal/Modal";
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 import { getAccountDetail, getAllUsers } from "features/users/UsersSlice";
@@ -40,9 +41,6 @@ const Search = ({ showModal, setShowModal }) => {
           <p>no user found. please try again</p>
         ) : (
           userFound.searchedAccounts.map((user) => {
-            {
-              console.log({ user });
-            }
             return <UserCard key={user._id} user={user} />;
           })
         )}
@@ -50,6 +48,9 @@ const Search = ({ showModal, setShowModal }) => {
       {/* if( userFound.length > 0){} */}
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
+      {showModal.status && (
+        <Modal showModal={showModal} setShowModal={setShowModal} />
+      )}
     </div>
   );
 };
@@ -68,12 +69,12 @@ const SearchInput = ({
     // setSearchTerm((prev) => prev + e.key);
     setUserSearched((prev) => searchTerm);
 
-    if (e.key === "Enter") {
-      console.log(searchTerm);
-      setShowComponent(true);
-      setSearchTerm((prev) => "");
-      dispatch(getAccountDetail({ searchTerm, token: user.token }));
-    }
+    // if (e.key === "Enter") {
+    console.log(searchTerm);
+    setShowComponent(true);
+    // setSearchTerm((prev) => "");
+    dispatch(getAccountDetail({ searchTerm, token: user.token }));
+    // }
   };
   return (
     <>

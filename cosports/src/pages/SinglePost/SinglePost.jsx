@@ -8,6 +8,7 @@ import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 import PostDetails from "./PostDetails/PostDetails";
 import PostComments from "./PostComments/PostComments";
+import Modal from "components/Modal/Modal";
 
 const SinglePost = ({ showModal, setShowModal }) => {
   const { id } = useParams();
@@ -30,6 +31,9 @@ const SinglePost = ({ showModal, setShowModal }) => {
       </div>
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
+      {showModal.status && (
+        <Modal showModal={showModal} setShowModal={setShowModal} />
+      )}
     </div>
   );
 };

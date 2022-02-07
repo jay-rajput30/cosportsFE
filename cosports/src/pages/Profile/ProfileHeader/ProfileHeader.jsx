@@ -83,7 +83,6 @@ export const ProfileHeaderTopAvatar = ({
   const user = useSelector((state) => state.user);
   const saveEditedDetialsClickHandler = () => {
     dispatch(editUserBio({ updatedUserDetails, token: user.token }));
-    // console.log("inside rpfile header avatar", updatedUserDetails);
     dispatch(updateUser(updatedUserDetails));
     editFormInactive();
   };
@@ -92,8 +91,6 @@ export const ProfileHeaderTopAvatar = ({
       <div className="profile--avatar">
         {getUserInitials(firstName, lastName)}
       </div>
-      {/* TODO: add edit user details feature */}
-
       <div>
         {editUser === false && <button onClick={editFormActive}>edit</button>}
         {editUser && (

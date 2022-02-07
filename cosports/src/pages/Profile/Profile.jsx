@@ -7,6 +7,7 @@ import ProfileBody from "./ProfileBody/ProfileBody";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import { useState } from "react";
 import EditProfileForm from "./EditProfileForm/EditProfileForm";
+import Modal from "components/Modal/Modal";
 
 const Profile = ({
   showModal,
@@ -52,6 +53,9 @@ const Profile = ({
       />
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
+      {showModal.status && (
+        <Modal showModal={showModal} setShowModal={setShowModal} />
+      )}
     </article>
   );
   // }
