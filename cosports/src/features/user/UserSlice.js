@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+const { createSlice, createAsyncThunk, current } = require("@reduxjs/toolkit");
 
 const initialState = {
   userDetail: null,
@@ -29,6 +29,13 @@ export const getUser = createAsyncThunk("user/getUser", async (token) => {
 
   return response.data;
 });
+
+// export const fetchUserDetail = createAsyncThunk(
+//   "user/getUser",
+//   async (token) => {
+//     const response = await ax
+//   }
+// );
 export const editUserBio = createAsyncThunk(
   "user/editBio",
   async ({ updatedUserDetails, token }) => {
@@ -59,6 +66,7 @@ export const followAccount = createAsyncThunk(
         },
       }
     );
+    return response.data;
   }
 );
 export const UserSlice = createSlice({
@@ -114,14 +122,24 @@ export const UserSlice = createSlice({
     },
     [followAccount.fulfilled]: (state, action) => {
       state.status = "fulfilled";
+      state.userDetail.userAccountDetails.followers =
+        action.payload.user.followers;
+      console.log({
+        payload: action.payload,
+        user: current(state),
+      });
     },
     [getUser.fulfilled]: (state, action) => {
+      console.log({ getUserThunk: action.payload });
       state.status = "fulfilled";
       state.userDetail = action.payload.user;
     },
     [getUser.rejected]: (state, action) => {
       state.status = "error";
       state.error = action.payload.err.message;
+    },
+    [getUser.loading]: (state, action) => {
+      state.status = "loading";
     },
   },
 });

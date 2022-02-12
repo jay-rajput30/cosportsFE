@@ -4,7 +4,7 @@ import PostDetailsBody from "./PostDetailsBody/PostDetailsBody";
 import PostDetailsBodyComment from "./PostDetailsBody/PostDetailsBodyContent/PostDetailsBodyContent";
 import PostDetailsHeader from "./PostDetailsHeader/PostDetailsHeader";
 
-const PostDetails = ({ post }) => {
+const PostDetails = ({ post, showModal, setShowModal }) => {
   const { firstName, lastName, username } = post.uid;
   const { content } = post;
   return (
@@ -15,9 +15,22 @@ const PostDetails = ({ post }) => {
         username={username}
       />
       <PostDetailsBody>
-        <PostDetailsBodyComment content={content} />
+        <PostDetailsBodyComment
+          content={content}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+        {/* <LikeAndComments
+        post={post}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      /> */}
       </PostDetailsBody>
-      <LikeAndComments post={post} />
+      <LikeAndComments
+        post={post}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 };

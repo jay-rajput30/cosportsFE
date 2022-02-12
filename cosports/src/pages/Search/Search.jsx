@@ -26,6 +26,13 @@ const Search = ({ showModal, setShowModal }) => {
 
     fetchUsers();
   }, []);
+
+  //when search term is entered make backend call to fetch the account details and show user details on card.
+  //on card click view the profile of the user on a new page
+  // onclick of the follow button on this view pofile page the followers count should update on screen
+  //and the logged in user's following count should also update.
+  //also the text of follow button should change to follow/unfollow on click.d
+
   return (
     <div className="search--container">
       <SearchInput

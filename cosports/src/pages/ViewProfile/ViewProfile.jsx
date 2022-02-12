@@ -22,9 +22,16 @@ const ViewProfile = ({
   const userPosts = useSelector((state) => state.posts);
   const navigate = useNavigate();
   const filteredPosts = userPosts.posts.filter((item) => item.uid._id === id);
-  const filteredUser = userFound.users.filter((item) => item.uid._id === id);
+  const filteredUser = userFound.searchedAccounts.filter(
+    (item) => item.uid._id === id
+  );
 
-  console.log({ id, users: userFound.users, filteredUser, filteredPosts });
+  console.log({
+    id,
+    users: userFound.searchedAccounts,
+    filteredUser,
+    filteredPosts,
+  });
 
   const backButtonClickHandler = () => {
     navigate("/search");

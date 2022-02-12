@@ -26,8 +26,16 @@ const SinglePost = ({ showModal, setShowModal }) => {
         <BiArrowBack onClick={backButtonClickHandler} />
       </IconContext.Provider>
       <div className="post--content">
-        <PostDetails post={singlePost} />
-        <PostComments post={singlePost} />
+        <PostDetails
+          post={singlePost}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+        <PostComments
+          post={singlePost}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
       </div>
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />

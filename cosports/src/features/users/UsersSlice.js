@@ -26,7 +26,6 @@ export const getAllUsers = createAsyncThunk(
 export const getAccountDetail = createAsyncThunk(
   "users/getAccount",
   async ({ searchTerm, token }) => {
-    console.log({ searchTerm, token });
     const response = await axios.post(
       "http://localhost:3003/account/accountdetail",
       { searchTerm },

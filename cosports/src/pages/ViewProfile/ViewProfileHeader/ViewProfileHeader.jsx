@@ -20,8 +20,9 @@ const ViewProfileHeader = ({ user }) => {
   const { firstName, lastName, username, location, website } = user.uid;
   const { bio, followers, following } = user;
 
-  const alreadyFollowing = user.following.includes(storedUser.userDetail._id);
+  const alreadyFollowing = user.followers.includes(storedUser.userDetail._id);
   console.log({
+    user,
     followingId: user.following,
     userId: storedUser.userDetail._id,
     alreadyFollowing,
@@ -78,9 +79,23 @@ export const ProfileHeaderTopAvatar = ({
   const dispatch = useDispatch();
   const userStored = useSelector((state) => state.user);
   const [follow, setFollow] = useState(alreadyFollowing);
+  // const followAccountClick = () => {
+  //   setFollow((prev) => true);
+  // };
+
+  // const unFollowAccountClick = () => {
+  //   setFollow((prev) => true);
+  // };
 
   useEffect(() => {
     const fetchAccountDetails = async () => {
+      // dispatch(
+      //   getAccountDetail({
+      //     searchTerm: user.uid.username,
+      //     token: userStored.token,
+      //   })
+      // );
+      // dispatch(getUser(userStored.token));
       dispatch(
         getAccountDetail({
           searchTerm: user.uid.username,
@@ -98,9 +113,15 @@ export const ProfileHeaderTopAvatar = ({
         token: userStored.token,
       })
     );
-    dispatch(getAllUsers(userStored.token));
+
     setFollow((prev) => (prev === true ? false : true));
+    // dispatch(getAllUsers(userStored.token));
+
+    if (userStored.status === "loading") {
+      console.log("loading");
+    }
   };
+
   return (
     <div className="profile--avatar--container">
       <div className="profile--avatar">
@@ -108,7 +129,7 @@ export const ProfileHeaderTopAvatar = ({
       </div>
 
       <div>
-        {follow ? (
+        {alreadyFollowing ? (
           <button onClick={followBtnClickHandler}>unfollow</button>
         ) : (
           <button onClick={followBtnClickHandler}>follow</button>

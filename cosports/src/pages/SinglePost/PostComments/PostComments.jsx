@@ -5,7 +5,7 @@ import { fetchAllComments } from "features/comment/commentSlice";
 import CommentCard from "components/CommentCard/CommentCard";
 import LikeAndComments from "components/Card/LikeAndComments/LikeAndComments";
 
-const PostComments = ({ post }) => {
+const PostComments = ({ post, showModal, setShowModal }) => {
   const dispatch = useDispatch();
   const allComments = useSelector((state) => state.comments);
 
@@ -28,7 +28,11 @@ const PostComments = ({ post }) => {
         return (
           <article className="single--comment" key={item._id}>
             <CommentCard comment={item} />
-            <LikeAndComments post={item} />
+            <LikeAndComments
+              post={item}
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
           </article>
         );
       })}
