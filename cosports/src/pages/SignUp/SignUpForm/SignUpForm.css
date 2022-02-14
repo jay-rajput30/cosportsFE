@@ -1,0 +1,46 @@
+.sign--up--form--container {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2);
+  margin: var(--space-1);
+}
+.signup--form--item--button {
+  margin-top: var(--space-2);
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.signup--form--item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid purple; */
+  width: 100%;
+}
+.confirmPassword--label {
+  font-size: var(--length-sm-3);
+}
+.signup--form--item > input {
+  width: 12.5rem;
+}
+
+.sign--up--submit {
+  font-size: var(--length-md-2);
+}
+
+.sign--up--form--header {
+  font-size: var(--length-lg-1);
+}
+
+.password--mismatch {
+  color: var(--clr-status-red);
+}
+
+@media screen and (min-width: 840px) {
+  .confirmPassword--label {
+    font-size: var(--length-md-1);
+  }
+}

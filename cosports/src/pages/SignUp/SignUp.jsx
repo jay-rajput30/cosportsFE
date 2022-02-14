@@ -1,5 +1,13 @@
+import "./SignUp.css";
+import SignUpForm from "./SignUpForm/SignUpForm";
+
 const SignUp = () => {
-  return <h1>this is the sign page</h1>;
+  return (
+    <div className="sign--up--container">
+      <p className="hero--text">cosports</p>
+      <SignUpForm />
+    </div>
+  );
 };
 
 export default SignUp;

@@ -69,6 +69,16 @@ export const followAccount = createAsyncThunk(
     return response.data;
   }
 );
+
+export const signupUser = createAsyncThunk(
+  "user/signupuser",
+  async (formData) => {
+    const response = await axios.post("http://localhost:3003/user", {
+      formData,
+    });
+    return response.data;
+  }
+);
 export const UserSlice = createSlice({
   name: "user",
   initialState,
@@ -124,10 +134,10 @@ export const UserSlice = createSlice({
       state.status = "fulfilled";
       state.userDetail.userAccountDetails.followers =
         action.payload.user.followers;
-      console.log({
-        payload: action.payload,
-        user: current(state),
-      });
+      // console.log({
+      //   payload: action.payload,
+      //   user: current(state),
+      // });
     },
     [getUser.fulfilled]: (state, action) => {
       console.log({ getUserThunk: action.payload });
@@ -140,6 +150,15 @@ export const UserSlice = createSlice({
     },
     [getUser.loading]: (state, action) => {
       state.status = "loading";
+    },
+    [signupUser.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = action.payload.err.message;
+    },
+    [signupUser.fulfilled]: (state, action) => {
+      state.userDetail = action.payload.user;
+      state.token = action.payload.token;
+      localStorage.setItem("userToken", JSON.stringify(state.token));
     },
   },
 });

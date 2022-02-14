@@ -2,7 +2,7 @@ import { fetchAllPosts } from "features/post/postSlice";
 import { fetchUserLogin } from "features/user/UserSlice";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -55,7 +55,9 @@ const Login = () => {
         <button className="form--submit--btn" onClick={loginClickHandler}>
           login
         </button>
-        <p>Haven't signed up yet eh?</p>
+        <p>
+          Haven't signed up yet? <Link to="/signup">sign up</Link>
+        </p>
       </form>
     </div>
   );
