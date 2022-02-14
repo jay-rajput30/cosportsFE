@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllComments } from "features/comment/commentSlice";
 import CommentCard from "components/CommentCard/CommentCard";
-import LikeAndComments from "components/Card/LikeAndComments/LikeAndComments";
+// import LikeAndComments from "components/Card/LikeAndComments/LikeAndComments";
+import LikeComment from "./LikeComment/LikeComment";
 
 const PostComments = ({ post, showModal, setShowModal }) => {
   const dispatch = useDispatch();
@@ -28,8 +29,8 @@ const PostComments = ({ post, showModal, setShowModal }) => {
         return (
           <article className="single--comment" key={item._id}>
             <CommentCard comment={item} />
-            <LikeAndComments
-              post={item}
+            <LikeComment
+              comment={item}
               showModal={showModal}
               setShowModal={setShowModal}
             />

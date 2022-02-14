@@ -12,11 +12,12 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    width: 40%;
+    width: 100%;
   }
 
   .feed--card--container {
-    padding: vara(--space-1);
-    border: 5px solid red;
+    padding: var(--space-1);
+    /* border: 5px solid red; */
+    width: 40%;
   }
 }

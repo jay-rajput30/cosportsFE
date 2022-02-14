@@ -60,7 +60,7 @@ export const postSlice = createSlice({
         (item) => item._id === action.payload._id
       );
       const likesObj = state.posts[postFound].likes;
-
+      console.log({ postFound, likesObj });
       const alreadyLiked = likesObj.find(
         (item) => item === action.payload.uid._id
       );

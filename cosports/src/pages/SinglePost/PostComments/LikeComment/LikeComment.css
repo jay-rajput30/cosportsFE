@@ -1,0 +1,24 @@
+.comment--like--container {
+  margin-top: var(--space-1);
+  padding-left: var(--space-2);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.react--icon {
+  display: inline-block;
+}
+
+.comment--likes--count {
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 480px) {
+  .comment--likes--count {
+    margin-left: 15px;
+  }
+  .comment--like--container {
+    margin-bottom: var(--space-1);
+  }
+}

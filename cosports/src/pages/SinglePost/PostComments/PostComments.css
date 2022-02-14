@@ -1,9 +1,12 @@
 .comments--container {
+  width: 100%;
 }
 
 .single--comment {
   border-top: 1px solid var(--clr-secondary);
   padding: var(--space-1);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: var(--space-2);
 }
 
 .single--comment:last-child {

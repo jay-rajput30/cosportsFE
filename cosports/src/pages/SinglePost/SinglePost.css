@@ -25,4 +25,9 @@
     margin-top: var(--space-2);
     margin-left: var(--space-2);
   }
+
+  .back--icon {
+    position: sticky;
+    left: 260px;
+  }
 }
