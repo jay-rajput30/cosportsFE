@@ -5,38 +5,58 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { createPost } from "features/post/postSlice";
 import { addComment } from "features/comment/commentSlice";
+// import "dotenv/config";
+import axios from "axios";
 
 const Modal = ({ showModal, setShowModal }) => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState({ text: "", postImg: null });
+  const [res, setRes] = useState();
+  const [uploadStatus, setUploadStatus] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   //   const { firstName, lastName, _id: id } = user.userDetail;
 
-  const postBtnClickHandler = () => {
-    if (showModal.type === "post") {
+  const uploadImage = async () => {
+    try {
+      const formData = new FormData();
+      console.log({ image: content.postImg });
+      formData.append("file", content.postImg);
+      formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+      const response = await axios.post(process.env.REACT_APP_URL, formData);
+      setRes(response);
+      return response;
+      setUploadStatus(true);
+    } catch (e) {
+      console.error({ error: e });
+    }
+  };
+  const postBtnClickHandler = async (e) => {
+    // add the input file button and store that image in state.
+    // onclick on create button first we have to upload the image on cloudinary and then dispatch to create post
+    // console.log({ file: e.target.files[0] });
+    let res = await uploadImage();
+    console.log({ res });
+    if (res.status === 200) {
+      console.log("inside button click function");
+      const { secure_url } = res.data;
+      setContent((prev) => ({ ...prev, postImg: secure_url }));
+
+      const newContent = { text: content.text, postImg: secure_url  };
       dispatch(
         createPost({
-          postData: { content, type: "post" },
+          postData: newContent,
           token: user.token,
         })
       );
-      //   add comment api call needs to send content and post id to backend
-    } else {
-      dispatch(
-        addComment({
-          postData: { content, postId: showModal.postId },
-          token: user.token,
-        })
-      );
-    }
 
-    setShowModal((prev) => ({
-      ...prev,
-      status: false,
-      type: "",
-      postId: "",
-    }));
+      setShowModal((prev) => ({
+        ...prev,
+        status: false,
+        type: "",
+        postId: "",
+      }));
+    }
   };
   return (
     <section className="modal--background">
@@ -51,7 +71,14 @@ const Modal = ({ showModal, setShowModal }) => {
             autoFocus
             rows="8"
             name={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(e) => setContent({ ...content, text: e.target.value })}
+          />
+          <input
+            className="input--file"
+            type="file"
+            onChange={(e) =>
+              setContent({ ...content, postImg: e.target.files[0] })
+            }
           />
           <button onClick={postBtnClickHandler}>post</button>
         </div>

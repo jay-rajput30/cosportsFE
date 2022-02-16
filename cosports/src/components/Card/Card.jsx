@@ -2,6 +2,9 @@ import CardBody from "./CardBody/CardBody";
 import CardHeader from "./CardHeader/CardHeader";
 import "./Card.css";
 import LikeAndComments from "./LikeAndComments/LikeAndComments";
+import { Image } from "cloudinary-react";
+
+// import "dotenv/config";
 
 const Card = ({
   item,
@@ -25,7 +28,14 @@ const Card = ({
         componentActive={componentActive}
       />
       <CardBody id={item._id} componentActive={componentActive}>
-        <p className="card--content">{content}</p>
+        <p className="card--content">{content.text}</p>
+        {content.postImg ? (
+          <Image
+            className="card--image"
+            cloudName={process.env.REACT_APP_CLOUD_NAME}
+            publicId={content.postImg}
+          />
+        ) : null}
       </CardBody>
       <LikeAndComments
         post={item}

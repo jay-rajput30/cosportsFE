@@ -33,6 +33,7 @@ const Login = () => {
   }, [status]);
   return (
     <div className="login--container">
+      <p className="hero--text">cosports</p>
       <form className="login--form" onSubmit={(e) => e.preventDefault()}>
         <div className="form--item">
           <label htmlFor="username">username</label>

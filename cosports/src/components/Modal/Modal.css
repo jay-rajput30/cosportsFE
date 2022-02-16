@@ -28,6 +28,10 @@
   flex-direction: column;
   /* border: 2px solid saddlebrown; */
 }
+
+.input--file {
+  border: none;
+}
 .modal--avatar {
   height: 30px;
   width: 30px;

@@ -41,7 +41,7 @@ export const createPost = createAsyncThunk(
   async ({ postData, token }) => {
     const response = await axios.post(
       "http://localhost:3003/post",
-      { content: postData.content, type: postData.type },
+      { content: postData },
       {
         headers: {
           Authorization: token,

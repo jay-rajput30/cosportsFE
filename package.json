@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/jay-rajput30/cosportsFE#readme",
   "dependencies": {
+    "cloudinary-react": "^1.7.1",
+    "dotenv": "^16.0.0",
+    "fs": "^0.0.1-security",
     "react-icons": "^4.3.1",
     "redux": "^4.1.2"
   }
