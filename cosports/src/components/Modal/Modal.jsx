@@ -25,38 +25,52 @@ const Modal = ({ showModal, setShowModal }) => {
       formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
       const response = await axios.post(process.env.REACT_APP_URL, formData);
       setRes(response);
-      return response;
       setUploadStatus(true);
+      setShowModal({ ...showModal, status: "loading" });
+      return response;
     } catch (e) {
       console.error({ error: e });
     }
   };
   const postBtnClickHandler = async (e) => {
-    // add the input file button and store that image in state.
-    // onclick on create button first we have to upload the image on cloudinary and then dispatch to create post
-    // console.log({ file: e.target.files[0] });
-    let res = await uploadImage();
-    console.log({ res });
-    if (res.status === 200) {
-      console.log("inside button click function");
-      const { secure_url } = res.data;
-      setContent((prev) => ({ ...prev, postImg: secure_url }));
+    if (showModal.type === "post") {
+      try {
+        let res = await uploadImage();
+        if (res.status === 200) {
+          const { secure_url } = res.data;
+          setContent((prev) => ({ ...prev, postImg: secure_url }));
 
-      const newContent = { text: content.text, postImg: secure_url  };
+          const newContent = { text: content.text, postImg: secure_url };
+          dispatch(
+            createPost({
+              postData: newContent,
+              token: user.token,
+            })
+          );
+        }
+        setShowModal({ ...showModal, status: "loading" });
+      } catch {
+        console.log("oops something went wrong.  please login again and try");
+      } finally {
+        setShowModal({ ...showModal, status: "success" });
+      }
+
+      // console.log({ res });
+    } else {
       dispatch(
-        createPost({
-          postData: newContent,
+        addComment({
+          postData: { content: content.text, postId: showModal.postId },
           token: user.token,
         })
       );
-
-      setShowModal((prev) => ({
-        ...prev,
-        status: false,
-        type: "",
-        postId: "",
-      }));
     }
+
+    setShowModal((prev) => ({
+      ...prev,
+      status: false,
+      type: "",
+      postId: "",
+    }));
   };
   return (
     <section className="modal--background">
@@ -73,13 +87,15 @@ const Modal = ({ showModal, setShowModal }) => {
             name={content}
             onChange={(e) => setContent({ ...content, text: e.target.value })}
           />
-          <input
-            className="input--file"
-            type="file"
-            onChange={(e) =>
-              setContent({ ...content, postImg: e.target.files[0] })
-            }
-          />
+          {showModal.type === "post" && (
+            <input
+              className="input--file"
+              type="file"
+              onChange={(e) =>
+                setContent({ ...content, postImg: e.target.files[0] })
+              }
+            />
+          )}
           <button onClick={postBtnClickHandler}>post</button>
         </div>
 

@@ -10,7 +10,7 @@
 .card--content {
   text-align: left;
   font-size: var(--length-md-1);
-  margin-left: 2.5rem;
+  margin-left: 0.2rem;
 }
 
 @media screen and (min-width: 480px) {

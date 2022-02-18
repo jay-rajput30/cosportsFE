@@ -14,7 +14,7 @@ const Card = ({
   showModal,
   setShowModal,
 }) => {
-  const { content, likes, updatedAt: date } = item;
+  const { content, likes, date } = item;
   const { firstName, lastName, username } = item.uid;
   // console.log({ item });
   return (

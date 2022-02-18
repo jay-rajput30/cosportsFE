@@ -6,7 +6,7 @@
   justify-content: center;
   padding: var(--space-1);
   margin: var(--space-2) 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .form--submit--btn {
@@ -21,4 +21,14 @@
 #username,
 #password {
   width: 200px;
+}
+
+@media screen and (min-width: 840px) {
+  .login--container {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .hero--text {
+    margin-right: var(--space-3);
+  }
 }

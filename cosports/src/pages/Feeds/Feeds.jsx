@@ -37,6 +37,8 @@ const Feeds = ({
     <div className="feed--container">
       <div className="feed--card--container">
         {allPosts?.posts?.map((item) => {
+          console.log({ date: item.date });
+
           return (
             <Card
               key={item._id}
