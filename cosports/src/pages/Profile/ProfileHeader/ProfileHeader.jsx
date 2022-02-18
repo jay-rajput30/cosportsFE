@@ -1,6 +1,7 @@
 import { getUserInitials } from "utils/cardUtils";
 import "./ProfileHeader.css";
-import { FiMapPin, FiGlobe } from "react-icons/fi";
+import { FiMapPin, FiGlobe, FiPower } from "react-icons/fi";
+
 import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 import EditUserBio from "../EditUserBio/EditUserBio";
@@ -13,7 +14,12 @@ import {
 import { useState } from "react";
 import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
-const ProfileHeader = ({ editUser, editFormActive, editFormInactive }) => {
+const ProfileHeader = ({
+  editUser,
+  editFormActive,
+  editFormInactive,
+  logoutBtnClickHandler,
+}) => {
   const user = useSelector((state) => state.user);
   const { firstName, lastName, username, location, website } = user.userDetail;
   const { bio, followers, following } = user.userDetail.userAccountDetails;
@@ -32,6 +38,7 @@ const ProfileHeader = ({ editUser, editFormActive, editFormInactive }) => {
           editFormActive={editFormActive}
           editFormInactive={editFormInactive}
           updatedUserDetails={updatedUserDetails}
+          logoutBtnClickHandler={logoutBtnClickHandler}
         />
         <ProfileHeaderTopName
           firstName={firstName}
@@ -78,6 +85,7 @@ export const ProfileHeaderTopAvatar = ({
   editFormActive,
   editFormInactive,
   updatedUserDetails,
+  logoutBtnClickHandler,
 }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -93,6 +101,14 @@ export const ProfileHeaderTopAvatar = ({
       </div>
       <div>
         {editUser === false && <button onClick={editFormActive}>edit</button>}
+        {editUser === false && (
+          <button>
+            <IconContext.Provider value={{ className: "logout--icon" }}>
+              <FiPower onClick={logoutBtnClickHandler} />
+            </IconContext.Provider>
+          </button>
+        )}
+
         {editUser && (
           <button onClick={saveEditedDetialsClickHandler}>save</button>
         )}

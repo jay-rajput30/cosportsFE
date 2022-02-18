@@ -22,6 +22,7 @@ const Profile = ({
 
   // console.log({ firstName, lastName, username, bio});
   const dispatch = useDispatch();
+
   const logoutBtnClickHandler = () => {
     localStorage.removeItem("userToken");
     dispatch(logoutUser());
@@ -41,8 +42,9 @@ const Profile = ({
         editUser={editUser}
         editFormActive={editFormActive}
         editFormInactive={editFormInactive}
+        logoutBtnClickHandler={logoutBtnClickHandler}
       />
-      <button onClick={logoutBtnClickHandler}>logout</button>
+
       <ProfileBody
         showModal={showModal}
         setShowModal={setShowModal}
