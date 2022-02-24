@@ -15,6 +15,11 @@
   display: inline-block;
 }
 
+.heart--filled {
+  display: inline-block;
+  color: red;
+}
+
 .likes--count {
   margin-left: -110px;
 }

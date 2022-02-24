@@ -7,6 +7,8 @@ import {
   updateCommentLikes,
 } from "features/comment/commentSlice";
 
+import { FaHeart } from "react-icons/fa";
+
 const LikeComment = ({ comment }) => {
   const dispatch = useDispatch();
   const { userDetail, token, status, error } = useSelector(
@@ -20,20 +22,21 @@ const LikeComment = ({ comment }) => {
     // dispatch(updateLikes({ token, commentId: comment._id }));
   };
 
-  return (
-    <div className="comment--like--container">
-      <IconContext.Provider value={{ className: "react--icon" }}>
-        <BiHeart onClick={() => likeButtonClickHandler(comment)} />
-        <span className="comment--likes--count">{comment.likes.length}</span>
-      </IconContext.Provider>
-      {/* <IconContext.Provider value={{ className: "react--icon" }}>
-        <BiCommentDetail onClick={commentBtnClickHandler} />
-      </IconContext.Provider> */}
-      {/* <IconContext.Provider value={{ className: "react--icon" }}>
-        <BiShareAlt />
-      </IconContext.Provider> */}
-    </div>
+  const alreadyLiked = comment.likes.includes(userDetail._id);
+
+  const showLikes = alreadyLiked ? (
+    <IconContext.Provider value={{ className: "heart--filled" }}>
+      <FaHeart onClick={() => likeButtonClickHandler(comment)} />
+      <span className="likes--count">{comment.likes.length}</span>
+    </IconContext.Provider>
+  ) : (
+    <IconContext.Provider value={{ className: "react--icon" }}>
+      <BiHeart onClick={() => likeButtonClickHandler(comment)} />
+      <span className="likes--count">{comment.likes.length}</span>
+    </IconContext.Provider>
   );
+
+  return <div className="comment--like--container">{showLikes}</div>;
 };
 
 export default LikeComment;
