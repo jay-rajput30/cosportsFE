@@ -1,0 +1,17 @@
+.notification--card--container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+  align-items: center;
+  border-bottom: 2px solid var(--clr-primary);
+}
+
+.notification {
+  padding: 0.7rem;
+  text-align: start;
+  /* margin: 0.5rem; */
+}
+/* 
+.notification:first-child {
+  border-top: 2px solid var(--clr-primary);
+} */
