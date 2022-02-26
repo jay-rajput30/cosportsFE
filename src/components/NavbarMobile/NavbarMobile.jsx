@@ -7,7 +7,7 @@ import Button from "components/Button/Button";
 const NavbarMobile = ({ showModal, setShowModal }) => {
   const navigate = useNavigate();
   const homeIconClickHandler = () => {
-    navigate("/feeds");
+    navigate("/");
   };
   const searchIconClickHandler = () => {
     navigate("/search");

@@ -4,8 +4,6 @@ import "./Card.css";
 import LikeAndComments from "./LikeAndComments/LikeAndComments";
 import { Image } from "cloudinary-react";
 
-// import "dotenv/config";
-
 const Card = ({
   item,
   showComponent,
