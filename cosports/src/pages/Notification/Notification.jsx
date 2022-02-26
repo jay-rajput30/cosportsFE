@@ -14,11 +14,14 @@ const Notification = ({ showModal, setShowModal }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://cosportsapi.herokuapp.com/notification", {
-          headers: {
-            Authorization: token,
-          },
-        });
+        const response = await axios.get(
+          "https://cosportsapi.herokuapp.com/notification",
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
         if (response.status === 200) {
           setAllNotifications((prev) => response.data.notifications);
         }
@@ -32,7 +35,6 @@ const Notification = ({ showModal, setShowModal }) => {
 
   return (
     <div className="notification--container">
-      {console.log({ allNotifications })}
       {allNotifications.map((notification) => {
         return (
           <NotificationCard
@@ -41,6 +43,7 @@ const Notification = ({ showModal, setShowModal }) => {
           />
         );
       })}
+      {}
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />
       <NavbarDesktop showModal={showModal} setShowModal={setShowModal} />
     </div>

@@ -102,6 +102,9 @@ export const postSlice = createSlice({
       state.status = "error";
       state.error = action.error.message;
     },
+    [createPost.fulfilled]: (state, action) => {
+      state.status = "loading";
+    },
   },
 });
 
