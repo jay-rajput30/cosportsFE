@@ -11,8 +11,8 @@ import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
 import ViewProfile from "pages/ViewProfile/ViewProfile";
-import { useSelector } from "react-redux";
-import Loading from "components/Loader/Loading";
+// import { useSelector } from "react-redux";
+// import Loading from "components/Loader/Loading";
 
 function App() {
   const navigate = useNavigate();
