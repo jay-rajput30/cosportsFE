@@ -39,10 +39,10 @@ function App() {
       <header className="app--header">
         {/* {status == "loading" && <Loading />} */}
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route
-            path="/"
+            path="/feeds"
             element={
               <PrivateRoute>
                 <Feeds

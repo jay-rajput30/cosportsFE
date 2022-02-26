@@ -11,11 +11,13 @@ const LikeAndComments = ({ post, showModal, setShowModal }) => {
     (state) => state.user
   );
 
+  console.log({ userDetail });
   const allPosts = useSelector((state) => state.posts);
   const alreadyLiked = post.likes.includes(userDetail._id);
   // console.log({ alreadyLiked });
+  console.log({ postInLC: post });
+
   const likeButtonClickHandler = (post) => {
-    // console.log({ post });
     dispatch(incrementLikes(post));
     dispatch(updateLikes({ token, postId: post._id }));
   };

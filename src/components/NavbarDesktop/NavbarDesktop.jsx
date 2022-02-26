@@ -8,7 +8,7 @@ const NavbarDesktop = ({ showModal, setShowModal }) => {
   const navigate = useNavigate();
   const homeIconClickHandler = () => {
     console.log("inside home click handler");
-    navigate("/");
+    navigate("/feeds");
   };
   const searchIconClickHandler = () => {
     console.log("inside search click handler");

@@ -5,7 +5,7 @@ import Card from "components/Card/Card";
 import "./Feeds.css";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Modal from "components/Modal/Modal";
 
 const Feeds = ({
@@ -16,7 +16,7 @@ const Feeds = ({
   componentActive,
   componentInactive,
 }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const allPosts = useSelector((state) => state.posts);
   const { userDetail, token, status, error } = useSelector(
@@ -37,7 +37,9 @@ const Feeds = ({
     <div className="feed--container">
       <div className="feed--card--container">
         {allPosts?.posts?.map((item) => {
-          console.log({ date: item.date });
+          {/* console.log({ date: item.date }); */}
+
+          console.log({ feedPostItem: item });
 
           return (
             <Card

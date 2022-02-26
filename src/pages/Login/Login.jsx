@@ -27,7 +27,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (status === "fulfilled") {
-      navigate("/");
+      navigate("/feeds");
       dispatch(fetchAllPosts(token));
     }
   }, [status]);
