@@ -1,5 +1,5 @@
 import "./LikeComment.css";
-import { BiHeart, BiCommentDetail, BiShareAlt } from "react-icons/bi";
+import { BiHeart } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
 import {
@@ -11,9 +11,7 @@ import { FaHeart } from "react-icons/fa";
 
 const LikeComment = ({ comment }) => {
   const dispatch = useDispatch();
-  const { userDetail, token, status, error } = useSelector(
-    (state) => state.user
-  );
+  const { userDetail, token } = useSelector((state) => state.user);
   const likeButtonClickHandler = (comment) => {
     console.log({ comment });
     dispatch(incrementCommentLikes(comment));

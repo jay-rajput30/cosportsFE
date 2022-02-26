@@ -1,4 +1,4 @@
-import { Route, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateToken } from "features/user/UserSlice";
 
@@ -9,7 +9,6 @@ const PrivateRoute = ({ children }) => {
   const userToken = token
     ? token
     : JSON.parse(localStorage.getItem("userToken"));
-  //   console.log({ userToken });
 
   dispatch(updateToken(userToken));
   return userToken ? children : <Navigate replace to="/login" />;

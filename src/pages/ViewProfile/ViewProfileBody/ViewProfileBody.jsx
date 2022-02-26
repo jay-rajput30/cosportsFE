@@ -1,5 +1,5 @@
 import "./ViewProfileBody.css";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
 import Card from "components/Card/Card";
 
 // item,
@@ -16,7 +16,7 @@ const ViewProfileBody = ({
   posts,
 }) => {
   //   const allPosts = useSelector((state) => state.posts);
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
 
   //   const userPosts = allPosts.posts.filter(
   //     (item) => item.uid._id === user.userDetail._id

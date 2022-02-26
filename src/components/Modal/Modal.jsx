@@ -10,8 +10,8 @@ import axios from "axios";
 
 const Modal = ({ showModal, setShowModal }) => {
   const [content, setContent] = useState({ text: "", postImg: null });
-  const [res, setRes] = useState();
-  const [uploadStatus, setUploadStatus] = useState(false);
+  const [ setRes] = useState();
+  const [ setUploadStatus] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 

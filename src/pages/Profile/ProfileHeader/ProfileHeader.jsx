@@ -6,11 +6,7 @@ import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 import EditUserBio from "../EditUserBio/EditUserBio";
 import { useDispatch } from "react-redux";
-import {
-  editUserBio,
-  fetchUserLogin,
-  updateUser,
-} from "features/user/UserSlice";
+import { editUserBio, updateUser } from "features/user/UserSlice";
 import { useState } from "react";
 import EditUserFullName from "../EditUserFullName/EditUserFullName";
 

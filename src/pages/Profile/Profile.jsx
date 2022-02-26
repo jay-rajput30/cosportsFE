@@ -1,12 +1,11 @@
 import NavbarDesktop from "components/NavbarDesktop/NavbarDesktop";
 import NavbarMobile from "components/NavbarMobile/NavbarMobile";
 import { logoutUser } from "features/user/UserSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./Profile.css";
 import ProfileBody from "./ProfileBody/ProfileBody";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import { useState } from "react";
-import EditProfileForm from "./EditProfileForm/EditProfileForm";
 import Modal from "components/Modal/Modal";
 
 const Profile = ({
@@ -17,7 +16,6 @@ const Profile = ({
   componentActive,
   componentInactive,
 }) => {
-  const user = useSelector((state) => state.user);
   const [editUser, setEditUser] = useState(false);
 
   // console.log({ firstName, lastName, username, bio});

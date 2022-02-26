@@ -12,8 +12,7 @@ const Search = ({ showModal, setShowModal }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [showComponent, setShowComponent] = useState(false);
-  const [userSearched, setUserSearched] = useState();
-  const users = useSelector((state) => state.users);
+  const [setUserSearched] = useState();
   const userFound = useSelector((state) => state.users);
 
   console.log({ userFound: userFound });

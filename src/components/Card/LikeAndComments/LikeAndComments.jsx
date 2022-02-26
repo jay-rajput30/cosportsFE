@@ -7,12 +7,12 @@ import { FaHeart } from "react-icons/fa";
 
 const LikeAndComments = ({ post, showModal, setShowModal }) => {
   const dispatch = useDispatch();
-  const { userDetail, token, status, error } = useSelector(
+  const { userDetail, token} = useSelector(
     (state) => state.user
   );
 
   console.log({ userDetail });
-  const allPosts = useSelector((state) => state.posts);
+  // const allPosts = useSelector((state) => state.posts);
   const alreadyLiked = post.likes.includes(userDetail._id);
   // console.log({ alreadyLiked });
   console.log({ postInLC: post });

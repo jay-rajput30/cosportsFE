@@ -1,4 +1,4 @@
-import { getDateFormat, getUserInitials } from "utils/cardUtils";
+import { getUserInitials } from "utils/cardUtils";
 import "./PostDetailsHeader.css";
 
 const PostDetailsHeader = ({ firstname, lastname, username }) => {

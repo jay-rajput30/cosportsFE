@@ -1,4 +1,3 @@
-import Modal from "components/Modal/Modal";
 import "./Button.css";
 
 const Button = ({ text, screen, showModal, setShowModal }) => {

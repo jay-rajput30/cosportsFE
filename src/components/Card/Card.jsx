@@ -12,7 +12,7 @@ const Card = ({
   showModal,
   setShowModal,
 }) => {
-  const { content, likes, date } = item;
+  const { content, date } = item;
   const { firstName, lastName, username } = item.uid;
   console.log({ item });
   return (

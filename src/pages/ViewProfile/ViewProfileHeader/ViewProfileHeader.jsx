@@ -5,14 +5,9 @@ import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
 // import EditUserBio from "../EditUserBio/EditUserBio";
 import { useDispatch } from "react-redux";
-import {
-  editUserBio,
-  followAccount,
-  getUser,
-  updateUser,
-} from "features/user/UserSlice";
+import { followAccount, getUser } from "features/user/UserSlice";
 import { useEffect, useState } from "react";
-import { getAccountDetail, getAllUsers } from "features/users/UsersSlice";
+import { getAccountDetail } from "features/users/UsersSlice";
 // import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
 const ViewProfileHeader = ({ user }) => {

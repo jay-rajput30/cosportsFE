@@ -9,9 +9,7 @@ const Login = () => {
   const [login, setLogin] = useState({ username: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userDetail, token, status, error } = useSelector(
-    (state) => state.user
-  );
+  const { token, status } = useSelector((state) => state.user);
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;

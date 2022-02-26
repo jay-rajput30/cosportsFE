@@ -17,7 +17,7 @@ export const getUserInitials = (firstName, lastName = "") => {
 export const getDayDifference = (date) => {
   console.log({ date });
 
-  const diff = new Date().getTime() - new Date(date).getTime;
+  // const diff = new Date().getTime() - new Date(date).getTime;
 
   let days = new Date(
     new Date().getTime() - new Date(date).getTime()

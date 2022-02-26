@@ -1,5 +1,5 @@
 import "./ProfileBody.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Card from "components/Card/Card";
 
 // item,
