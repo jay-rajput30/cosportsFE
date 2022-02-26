@@ -7,6 +7,7 @@ import ProfileBody from "./ProfileBody/ProfileBody";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import { useState } from "react";
 import Modal from "components/Modal/Modal";
+import { useNavigate } from "react-router-dom";
 
 const Profile = ({
   showModal,
@@ -17,13 +18,14 @@ const Profile = ({
   componentInactive,
 }) => {
   const [editUser, setEditUser] = useState(false);
-
+  const navigate = useNavigate();
   // console.log({ firstName, lastName, username, bio});
   const dispatch = useDispatch();
 
   const logoutBtnClickHandler = () => {
     localStorage.removeItem("userToken");
     dispatch(logoutUser());
+    navigate("/");
   };
   const editFormActive = () => {
     setEditUser(true);
