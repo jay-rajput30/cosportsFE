@@ -1,26 +1,41 @@
 {
-  "name": "cosportsfe",
-  "version": "1.0.0",
-  "description": "This is the front end for cosports social media app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jay-rajput30/cosportsFE.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jay-rajput30/cosportsFE/issues"
-  },
-  "homepage": "https://github.com/jay-rajput30/cosportsFE#readme",
+  "name": "cosports",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.24.0",
     "cloudinary-react": "^1.7.1",
-    "dotenv": "^16.0.0",
-    "fs": "^0.0.1-security",
-    "react-icons": "^4.3.1",
-    "redux": "^4.1.2"
+    "history": "^5.2.0",
+    "image-to-base64": "^2.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
