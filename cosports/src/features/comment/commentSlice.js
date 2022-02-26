@@ -10,11 +10,14 @@ const initialState = {
 export const fetchAllComments = createAsyncThunk(
   "comments/fetchComments",
   async (token) => {
-    const response = await axios.get("http://localhost:3003/comment", {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.get(
+      `https://cosportsapi.herokuapp.com/comment`,
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     return response.data.comments;
   }
@@ -24,7 +27,7 @@ export const addComment = createAsyncThunk(
   "comments/addComment",
   async ({ postData, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/comment/addcomment",
+      `https://cosportsapi.herokuapp.com/comment/addcomment`,
       { content: postData.content, postId: postData.postId },
       {
         headers: {
@@ -40,7 +43,7 @@ export const updateCommentLikes = createAsyncThunk(
   "comment/likecomment",
   async ({ token, commentId }) => {
     const response = await axios.post(
-      "http://localhost:3003/comment/likecomment",
+      `https://cosportsapi.herokuapp.com/comment/likecomment`,
       { commentId },
       {
         headers: {

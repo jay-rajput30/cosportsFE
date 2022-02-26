@@ -13,7 +13,7 @@ const initialState = {
 export const getAllUsers = createAsyncThunk(
   "users/fetchAllUsers",
   async (token) => {
-    const response = await axios.get("http://localhost:3003/user", {
+    const response = await axios.get(`https://cosportsapi.herokuapp.com/user`, {
       headers: {
         Authorization: token,
       },
@@ -27,7 +27,7 @@ export const getAccountDetail = createAsyncThunk(
   "users/getAccount",
   async ({ searchTerm, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/account/accountdetail",
+      `https://cosportsapi.herokuapp.com/account/accountdetail`,
       { searchTerm },
       {
         headers: {

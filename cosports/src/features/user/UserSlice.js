@@ -12,35 +12,35 @@ const initialState = {
 export const fetchUserLogin = createAsyncThunk(
   "user/fetchUser",
   async ({ username, password }) => {
-    const response = await axios.post("http://localhost:3003/user/singleuser", {
-      username,
-      password,
-    });
+    const response = await axios.post(
+      `https://cosportsapi.herokuapp.com/user/singleuser`,
+      {
+        username,
+        password,
+      }
+    );
 
     return response.data;
   }
 );
 export const getUser = createAsyncThunk("user/getUser", async (token) => {
-  const response = await axios.get("http://localhost:3003/user/singleuser", {
-    headers: {
-      Authorization: token,
-    },
-  });
+  const response = await axios.get(
+    `https://cosportsapi.herokuapp.com/user/singleuser`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
 
   return response.data;
 });
 
-// export const fetchUserDetail = createAsyncThunk(
-//   "user/getUser",
-//   async (token) => {
-//     const response = await ax
-//   }
-// );
 export const editUserBio = createAsyncThunk(
   "user/editBio",
   async ({ updatedUserDetails, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/account/updatedetail",
+      `https://cosportsapi.herokuapp.com/account/updatedetail`,
       {
         updatedUserDetails,
       },
@@ -58,7 +58,7 @@ export const followAccount = createAsyncThunk(
   "user/followaccount",
   async ({ accountToFollowId, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/account/followuser",
+      `https://cosportsapi.herokuapp.com/account/followuser`,
       { accountToFollowId },
       {
         headers: {
@@ -73,9 +73,12 @@ export const followAccount = createAsyncThunk(
 export const signupUser = createAsyncThunk(
   "user/signupuser",
   async (formData) => {
-    const response = await axios.post("http://localhost:3003/user", {
-      formData,
-    });
+    const response = await axios.post(
+      `https://cosportsapi.herokuapp.com/user`,
+      {
+        formData,
+      }
+    );
     return response.data;
   }
 );

@@ -10,7 +10,7 @@ const initialState = {
 export const fetchAllPosts = createAsyncThunk(
   "posts/fetchPosts",
   async (token) => {
-    const response = await axios.get("http://localhost:3003/post", {
+    const response = await axios.get(`https://cosportsapi.herokuapp.com/post`, {
       headers: {
         Authorization: token,
       },
@@ -24,7 +24,7 @@ export const updateLikes = createAsyncThunk(
   "posts/updateLikes",
   async ({ token, postId }) => {
     const response = await axios.post(
-      "http://localhost:3003/post/likepost",
+      "https://cosportsapi.herokuapp.com/post/likepost",
       { postId },
       {
         headers: {
@@ -40,7 +40,7 @@ export const createPost = createAsyncThunk(
   "posts/createPost",
   async ({ postData, token }) => {
     const response = await axios.post(
-      "http://localhost:3003/post",
+      "https://cosportsapi.herokuapp.com/post",
       { content: postData },
       {
         headers: {

@@ -65,11 +65,6 @@ export const ProfileHeaderTop = ({ children }) => {
   return <div className="profile--header--top--container">{children}</div>;
 };
 
-// editUser,
-// editFormActive,
-// editFormInactive,
-// updatedUserDetails,
-
 export const ProfileHeaderTopAvatar = ({
   firstName,
   lastName,
@@ -79,23 +74,9 @@ export const ProfileHeaderTopAvatar = ({
   const dispatch = useDispatch();
   const userStored = useSelector((state) => state.user);
   const [follow, setFollow] = useState(alreadyFollowing);
-  // const followAccountClick = () => {
-  //   setFollow((prev) => true);
-  // };
-
-  // const unFollowAccountClick = () => {
-  //   setFollow((prev) => true);
-  // };
 
   useEffect(() => {
     const fetchAccountDetails = async () => {
-      // dispatch(
-      //   getAccountDetail({
-      //     searchTerm: user.uid.username,
-      //     token: userStored.token,
-      //   })
-      // );
-      // dispatch(getUser(userStored.token));
       dispatch(
         getAccountDetail({
           searchTerm: user.uid.username,
