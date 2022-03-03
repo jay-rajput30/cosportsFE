@@ -21,7 +21,6 @@ const Login = () => {
 
   const loginClickHandler = () => {
     dispatch(fetchUserLogin(login));
-    console.log({ status });
   };
   useEffect(() => {
     if (status === "fulfilled") {

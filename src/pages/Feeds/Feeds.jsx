@@ -29,13 +29,11 @@ const Feeds = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log({ posts: allPosts });
+
   return (
     <div className="feed--container">
       <div className="feed--card--container">
         {allPosts?.posts?.map((item) => {
-          console.log({ feedPostItem: item });
-
           return (
             <Card
               key={item._id}

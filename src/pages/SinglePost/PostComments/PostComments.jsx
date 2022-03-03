@@ -22,7 +22,7 @@ const PostComments = ({ post, showModal, setShowModal }) => {
 
     fetchComments();
   }, []);
-  console.log({ comments });
+
   return (
     <article className="comments--container">
       {comments.map((item) => {

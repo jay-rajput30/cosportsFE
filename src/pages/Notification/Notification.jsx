@@ -25,7 +25,6 @@ const Notification = ({ showModal, setShowModal }) => {
         if (response.status === 200) {
           setAllNotifications((prev) => response.data.notifications);
         }
-        console.log({ res: response.data.notifications });
       } catch (e) {
         console.log("oops something went wrong", e.message);
       }

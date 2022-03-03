@@ -17,10 +17,6 @@ const SignUpForm = () => {
     password: "",
   });
 
-  //   const [password, setPassword] = useState({ firstTry: "", secondTry: "" });
-
-  //   const [error, setError] = useState(false);
-
   const backBtnClickHandler = () => {
     navigate("/login");
   };
@@ -34,9 +30,6 @@ const SignUpForm = () => {
   };
 
   const createBtnClickHandler = () => {
-    console.log(formData);
-
-    // setFormData({ ...formData, password: password.firstTry });
     dispatch(signupUser(formData));
     navigate("/login");
   };
@@ -108,24 +101,9 @@ const SignUpForm = () => {
           name="password"
           id="password"
           onChange={(e) => inputChangeHandler(e)}
-          //   onChange={(e) =>
-          //     setPassword({ ...password, firstTry: e.target.value })
-          //   }
         />
       </div>
-      {/* <div className="signup--form--item">
-        <label className="confirmPassword--label" htmlFor="confirmPassword">
-          confirm password
-        </label>
-        <input
-          type="password"
-          name="confirmPassword"
-          id="confirmPassword"
-          onChange={(e) =>
-            setPassword({ ...password, secondTry: e.target.value })
-          }
-        />
-      </div> */}
+
       <div className="signup--form--item--button">
         <button className="sign--up--submit" onClick={createBtnClickHandler}>
           create
@@ -134,9 +112,6 @@ const SignUpForm = () => {
           back
         </button>
       </div>
-      {/* {error && (
-        <span className="password--mismatch">the passwords do not match</span>
-      )} */}
     </form>
   );
 };

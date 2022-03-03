@@ -96,10 +96,6 @@ export const UserSlice = createSlice({
       state.token = action.payload;
     },
     updateUser: (state, action) => {
-      console.log({
-        payload: action.payload.newFullName,
-        state: state.userDetail.firstName,
-      });
       const [fName, lName] = action.payload.newFullName.trim().split(" ");
 
       state.userDetail.firstName = fName;
@@ -137,13 +133,8 @@ export const UserSlice = createSlice({
       state.status = "fulfilled";
       state.userDetail.userAccountDetails.followers =
         action.payload.user.followers;
-      // console.log({
-      //   payload: action.payload,
-      //   user: current(state),
-      // });
     },
     [getUser.fulfilled]: (state, action) => {
-      console.log({ getUserThunk: action.payload });
       state.status = "fulfilled";
       state.userDetail = action.payload.user;
     },
@@ -165,10 +156,6 @@ export const UserSlice = createSlice({
     },
   },
 });
-// set initial state
-// set combineReducers
-// set thunk
-// set extra reducers
 
 export const { logoutUser, updateToken, updateUser } = UserSlice.actions;
 export default UserSlice.reducer;

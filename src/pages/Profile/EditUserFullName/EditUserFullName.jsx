@@ -1,11 +1,4 @@
-// import { useState } from "react";
-
-const EditUserFullName = ({
-  //   editFormInactive,
-  updatedUserDetails,
-  setUpdatedUserDetails,
-}) => {
-  // const [newFullName, setNewFullName] = useState();
+const EditUserFullName = ({ updatedUserDetails, setUpdatedUserDetails }) => {
   return (
     <div className="user--fullname--container ">
       <input

@@ -2,11 +2,6 @@ import "./ProfileBody.css";
 import { useSelector } from "react-redux";
 import Card from "components/Card/Card";
 
-// item,
-//   showComponent,
-
-//   showModal,
-//   setShowModal,
 const ProfileBody = ({
   showModal,
   setShowModal,
@@ -19,7 +14,7 @@ const ProfileBody = ({
   const userPosts = allPosts.posts.filter(
     (item) => item.uid._id === user.userDetail._id
   );
-  // console.log({ userPosts, user });
+
   return (
     <section className="user--posts--container">
       {userPosts.map((item) => {

@@ -13,11 +13,8 @@ const LikeComment = ({ comment }) => {
   const dispatch = useDispatch();
   const { userDetail, token } = useSelector((state) => state.user);
   const likeButtonClickHandler = (comment) => {
-    console.log({ comment });
     dispatch(incrementCommentLikes(comment));
     dispatch(updateCommentLikes({ token, commentId: comment._id }));
-    // dispatch(incrementLikes(comment));
-    // dispatch(updateLikes({ token, commentId: comment._id }));
   };
 
   const alreadyLiked = comment.likes.includes(userDetail._id);

@@ -1,14 +1,10 @@
 import "./EditUserBio.css";
-// import { useSelector } from "react-redux";
 
 const EditUserBio = ({
   editFormInactive,
   updatedUserDetails,
   setUpdatedUserDetails,
 }) => {
-  // const user = useSelector((state) => state.user);
-  // const { bio } = user.userDetail.userAccountDetails;
-
   return (
     <div className="user--bio--container">
       <input

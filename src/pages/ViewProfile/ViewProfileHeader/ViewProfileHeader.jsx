@@ -3,12 +3,11 @@ import "./ViewProfileHeader.css";
 import { FiMapPin, FiGlobe } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { useSelector } from "react-redux";
-// import EditUserBio from "../EditUserBio/EditUserBio";
+
 import { useDispatch } from "react-redux";
 import { followAccount, getUser } from "features/user/UserSlice";
 import { useEffect, useState } from "react";
 import { getAccountDetail } from "features/users/UsersSlice";
-// import EditUserFullName from "../EditUserFullName/EditUserFullName";
 
 const ViewProfileHeader = ({ user }) => {
   const storedUser = useSelector((state) => state.user);
@@ -16,16 +15,7 @@ const ViewProfileHeader = ({ user }) => {
   const { bio, followers, following } = user;
 
   const alreadyFollowing = user.followers.includes(storedUser.userDetail._id);
-  console.log({
-    user,
-    followingId: user.following,
-    userId: storedUser.userDetail._id,
-    alreadyFollowing,
-  });
-  // const [updatedUserDetails, setUpdatedUserDetails] = useState({
-  //   newBio: bio,
-  //   newFullName: firstName + " " + lastName,
-  // });
+
   return (
     <div className="view--profile--header--container">
       <ProfileHeaderTop>
@@ -91,7 +81,6 @@ export const ProfileHeaderTopAvatar = ({
     );
 
     setFollow((prev) => (prev === true ? false : true));
-    // dispatch(getAllUsers(userStored.token));
 
     if (userStored.status === "loading") {
       console.log("loading");

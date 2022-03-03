@@ -19,7 +19,7 @@ const Profile = ({
 }) => {
   const [editUser, setEditUser] = useState(false);
   const navigate = useNavigate();
-  // console.log({ firstName, lastName, username, bio});
+
   const dispatch = useDispatch();
 
   const logoutBtnClickHandler = () => {
@@ -33,9 +33,7 @@ const Profile = ({
   const editFormInactive = () => {
     setEditUser(false);
   };
-  // if (editUser) {
-  //   return <EditProfileForm editFormInactive={editFormInactive} />;
-  // } else {
+
   return (
     <article className="profile--container">
       <ProfileHeader

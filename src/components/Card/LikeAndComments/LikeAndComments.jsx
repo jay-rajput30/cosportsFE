@@ -7,15 +7,9 @@ import { FaHeart } from "react-icons/fa";
 
 const LikeAndComments = ({ post, showModal, setShowModal }) => {
   const dispatch = useDispatch();
-  const { userDetail, token} = useSelector(
-    (state) => state.user
-  );
+  const { userDetail, token } = useSelector((state) => state.user);
 
-  console.log({ userDetail });
-  // const allPosts = useSelector((state) => state.posts);
   const alreadyLiked = post.likes.includes(userDetail._id);
-  // console.log({ alreadyLiked });
-  console.log({ postInLC: post });
 
   const likeButtonClickHandler = (post) => {
     dispatch(incrementLikes(post));
@@ -46,10 +40,7 @@ const LikeAndComments = ({ post, showModal, setShowModal }) => {
   return (
     <div className="card--like-comment--container">
       {showLikes}
-      {/* <IconContext.Provider value={{ className: "react--icon" }}>
-        <BiHeart onClick={() => likeButtonClickHandler(post)} />
-        <span className="likes--count">{post.likes.length}</span>
-      </IconContext.Provider> */}
+
       <IconContext.Provider value={{ className: "react--icon" }}>
         <BiCommentDetail onClick={commentBtnClickHandler} />
       </IconContext.Provider>

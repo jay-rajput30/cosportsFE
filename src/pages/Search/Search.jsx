@@ -11,11 +11,8 @@ import UserCard from "./UserCard/UserCard";
 const Search = ({ showModal, setShowModal }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  // const [showComponent, setShowComponent] = useState(false);
-  // const [setUserSearched] = useState();
-  const userFound = useSelector((state) => state.users);
 
-  console.log({ userFound: userFound });
+  const userFound = useSelector((state) => state.users);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -27,13 +24,7 @@ const Search = ({ showModal, setShowModal }) => {
 
   return (
     <div className="search--container">
-      <SearchInput
-        // setUserSearched={setUserSearched}
-        showModal={showModal}
-        setShowModal={setShowModal}
-        // showComponent={showComponent}
-        // setShowComponent={setShowComponent}
-      />
+      <SearchInput showModal={showModal} setShowModal={setShowModal} />
       <article className="user--found--container">
         {userFound.searchedAccounts.length === 0 ? (
           <p>no user found. please try again</p>
@@ -53,11 +44,9 @@ const Search = ({ showModal, setShowModal }) => {
   );
 };
 const SearchInput = ({
-  // setUserSearched,
   showModal,
   setShowModal,
-  // showComponent,
-  // setShowComponent,
+
   setUserFound,
 }) => {
   const dispatch = useDispatch();
@@ -65,14 +54,8 @@ const SearchInput = ({
   const user = useSelector((state) => state.user);
   const searchKeyPressHandler = (e) => {
     setSearchTerm(e.target.value);
-    // setUserSearched(searchTerm);
 
-    // if (e.key === "Enter") {
-    console.log(searchTerm);
-    // setShowComponent(true);
-    // setSearchTerm((prev) => "");
     dispatch(getAccountDetail({ searchTerm, token: user.token }));
-    // }
   };
   return (
     <>
@@ -81,7 +64,6 @@ const SearchInput = ({
         className="search--input"
         placeholder="type username and hit enter"
         value={searchTerm}
-        // onChange={(e) => setSearchTerm(e.target.value)}
         onChange={(e) => searchKeyPressHandler(e)}
       />
       <NavbarMobile showModal={showModal} setShowModal={setShowModal} />

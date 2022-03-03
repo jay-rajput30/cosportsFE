@@ -26,13 +26,6 @@ const ViewProfile = ({
     (item) => item.uid._id === id
   );
 
-  console.log({
-    id,
-    users: userFound.searchedAccounts,
-    filteredUser,
-    filteredPosts,
-  });
-
   const backButtonClickHandler = () => {
     navigate("/search");
   };

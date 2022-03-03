@@ -7,7 +7,6 @@ export const getDateFormat = (date) => {
 };
 
 export const getUserInitials = (firstName, lastName = "") => {
-  // console.log({ firstName, lastName });
   const first = firstName.split("")[0].toUpperCase();
 
   const last = lastName.length !== 0 ? lastName.split("")[0].toUpperCase() : "";
@@ -15,10 +14,6 @@ export const getUserInitials = (firstName, lastName = "") => {
 };
 
 export const getDayDifference = (date) => {
-  console.log({ date });
-
-  // const diff = new Date().getTime() - new Date(date).getTime;
-
   let days = new Date(
     new Date().getTime() - new Date(date).getTime()
   ).getDate();

@@ -64,7 +64,7 @@ export const commentSlice = createSlice({
         (item) => item._id === action.payload._id
       );
       const likesObj = state.comments[postFound].likes;
-      console.log({ postFound, likesObj });
+
       const alreadyLiked = likesObj.find(
         (item) => item === action.payload.uid._id
       );

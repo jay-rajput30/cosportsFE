@@ -1,13 +1,7 @@
 import "./ViewProfileBody.css";
-// import { useSelector } from "react-redux";
+
 import Card from "components/Card/Card";
 
-// item,
-//   showComponent,
-// showModal,
-//   setShowModal,
-//   componentActive,
-//   componentInactive,
 const ViewProfileBody = ({
   showModal,
   setShowModal,
@@ -15,13 +9,6 @@ const ViewProfileBody = ({
   componentInactive,
   posts,
 }) => {
-  //   const allPosts = useSelector((state) => state.posts);
-  // const user = useSelector((state) => state.user);
-
-  //   const userPosts = allPosts.posts.filter(
-  //     (item) => item.uid._id === user.userDetail._id
-  //   );
-  // console.log({ userPosts, user });
   return (
     <section className="user--posts--container">
       {posts.map((item) => {

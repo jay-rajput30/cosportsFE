@@ -15,7 +15,6 @@ const SinglePost = ({ showModal, setShowModal }) => {
   const allPosts = useSelector((state) => state.posts);
   const navigate = useNavigate();
   const singlePost = allPosts.posts.find((item) => item._id === id);
-  console.log({ singlePost });
 
   const backButtonClickHandler = () => {
     navigate("/feeds");

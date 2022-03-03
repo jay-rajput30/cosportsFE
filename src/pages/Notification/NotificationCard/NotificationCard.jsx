@@ -4,12 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const NotificationCard = ({ notification }) => {
   const navigate = useNavigate();
-  console.log({
-    text: "inside card",
-    date: new Date(
-      new Date().getTime() - new Date(notification.createdAt).getTime()
-    ).getDate(),
-  });
 
   const cardClickHandler = (postId) => {
     navigate(`/singlepost/${postId}`);

@@ -7,19 +7,15 @@ import { useNavigate } from "react-router-dom";
 const NavbarDesktop = ({ showModal, setShowModal }) => {
   const navigate = useNavigate();
   const homeIconClickHandler = () => {
-    console.log("inside home click handler");
     navigate("/feeds");
   };
   const searchIconClickHandler = () => {
-    console.log("inside search click handler");
     navigate("/search");
   };
   const notificationIconClickHandler = () => {
-    console.log("inside notif click handler");
     navigate("/notification");
   };
   const profileIconClickHandler = () => {
-    console.log("inside profile click handler");
     navigate("/profile");
   };
 

@@ -14,7 +14,7 @@ const Card = ({
 }) => {
   const { content, date } = item;
   const { firstName, lastName, username } = item.uid;
-  console.log({ item });
+
   return (
     <article className="card--container">
       <CardHeader

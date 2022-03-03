@@ -60,7 +60,7 @@ export const postSlice = createSlice({
         (item) => item._id === action.payload._id
       );
       const likesObj = state.posts[postFound].likes;
-      console.log({ postFound, likesObj });
+
       const alreadyLiked = likesObj.find(
         (item) => item === action.payload.uid._id
       );
@@ -94,7 +94,6 @@ export const postSlice = createSlice({
       state.posts[postIndex] = action.payload;
     },
     [createPost.fulfilled]: (state, action) => {
-      console.log({ payload: action.payload, state });
       state.status = "fulfilled";
       state.posts.unshift(action.payload);
     },

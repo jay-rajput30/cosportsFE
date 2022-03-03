@@ -122,7 +122,6 @@ export const ProfileHeaderTopName = ({
 }) => {
   return editUser ? (
     <EditUserFullName
-      // editFormInactive={editFormInactive}
       updatedUserDetails={updatedUserDetails}
       setUpdatedUserDetails={setUpdatedUserDetails}
     />

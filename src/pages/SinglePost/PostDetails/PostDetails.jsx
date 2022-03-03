@@ -20,11 +20,6 @@ const PostDetails = ({ post, showModal, setShowModal }) => {
           showModal={showModal}
           setShowModal={setShowModal}
         />
-        {/* <LikeAndComments
-        post={post}
-        showModal={showModal}
-        setShowModal={setShowModal}
-      /> */}
       </PostDetailsBody>
       <LikeAndComments
         post={post}

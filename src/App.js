@@ -11,8 +11,6 @@ import Search from "pages/Search/Search";
 import Notification from "pages/Notification/Notification";
 import { useState } from "react";
 import ViewProfile from "pages/ViewProfile/ViewProfile";
-// import { useSelector } from "react-redux";
-// import Loading from "components/Loader/Loading";
 
 function App() {
   const navigate = useNavigate();
@@ -22,10 +20,8 @@ function App() {
     postId: "",
   });
   const [showComponent, setShowComponent] = useState(false);
-  // const { status } = useSelector((state) => state.post);
-  // console.log({ status });
+
   const componentActive = (id) => {
-    console.log("component active func, id:", id);
     setShowComponent((showComponent) => true);
     navigate(`/singlepost/${id}`);
   };
@@ -37,7 +33,6 @@ function App() {
   return (
     <div className="main--container">
       <header className="app--header">
-        {/* {status == "loading" && <Loading />} */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
